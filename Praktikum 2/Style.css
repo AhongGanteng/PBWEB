@@ -1,0 +1,260 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    width: 100%;
+    height: auto;
+}
+
+main {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    margin: 10px 20px;
+}
+
+h2 {
+    color: #080d1a;
+}
+
+body {
+    background-color: rgb(220, 216, 216);
+    color: white;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #48b599; 
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 30px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #48b599; 
+} 
+
+nav h1 {
+    color: lightgray;
+    font-size: 20px;
+}
+
+nav div {
+    display: flex;
+    gap: 30px;
+}
+
+a {
+    text-decoration: none;
+    color: lightgray;
+    font-size: 15px;
+}
+
+nav img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid lightgray;
+}
+
+.Fototeks {
+    align-items: center;
+}
+
+#Jadwal {
+    padding: 2%;
+    background-color: #eef0f0;
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+#Jadwal h2 {
+    color: black;
+}
+
+.tablehe {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 8px;
+}
+
+table thead th:first-child, table tbody th {
+    background-color: #7da9a8;
+    color: #111827;
+}
+
+table tbody td {
+    background-color: rgb(220, 216, 216);
+    height: 55px;
+    text-align: left;
+    padding: 5px;
+    color: #080d1a;
+    overflow-wrap: break-word;
+}
+
+table tbody td, table tbody th {
+    border-radius: 5px;
+    text-align: center;
+}
+
+table thead th {
+    background-color: #3f4655;
+    color: White;
+    height: 35px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+table tbody th {
+    padding: 5px;
+    text-align: center;
+}
+
+#Reminder {
+    margin-top: 5%;
+    width: 100%;
+    height: auto;
+    padding: 2%;
+    background-color: #eef0f0;
+    border-radius: 10px;
+}
+
+.kumpulanReminder {
+    display: flex;
+    gap: 20px;
+    flex-wrap: nowrap;
+}
+
+.kartuReminder {
+    flex: 1;
+    padding: 20px;
+    background-color: rgb(220, 216, 216);
+    border-radius: 10px;
+}
+
+.kartuReminder h3 {
+    margin-bottom: 20px;
+    color: white;
+    background-color: #3f4655;
+    padding: 3%;
+    border-radius: 10px;
+}
+
+.kartuReminder p {
+    margin: 10px 0;
+    color: #080d1a;
+}
+
+.probLanjut {
+    background-color: #d5c75c;
+}
+
+.Siscer {
+    background-color: #1ddadd;
+}
+
+.TeologiMoral {
+    background-color: #656365;
+}
+
+.PBWeb {
+    background-color: #08de48;
+}
+
+.metodeNumerik {
+    background-color: #5f5187;
+}
+
+.meachineLearning {
+    background-color: #bb1515;
+}
+
+.intApp {
+    background-color: #253c74;
+}
+
+.ManajemenData {
+    background-color: #0b49cd;
+}
+
+.AljabarLinier {
+    background-color: #7c1853;
+}
+
+.ifBelajar {
+    background-color: #d908ba;
+}
+
+.bangunTidur {
+    background-color: #06eeff;
+}
+
+#Jadwal header {
+    display: flex;
+    justify-content: space-between;
+}
+
+aside {
+    position: relative;
+}
+
+.Tipsnya {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #1a1a1a;
+    min-width: 140px;
+    padding: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+aside:hover .Tipsnya {
+    display: block;
+}
+
+.Tipsnya p {
+    display: block;
+    padding: 12px 15px;
+    color: lightgray;
+}
+
+h2 {
+    margin-bottom: 15px;
+}
+
+.BelajarMandiri {
+    background-color: #8399ca;
+}
+
+.Tidur {
+    background-color: #ce9e25;
+}
