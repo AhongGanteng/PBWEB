@@ -13,7 +13,7 @@ html {
 main {
     padding-top: 80px;
     padding-bottom: 80px;
-    margin: 10px 20px;
+    margin: 10px;
 }
 
 h2 {
@@ -25,6 +25,7 @@ body {
     color: white;
     font-family: Helvetica, sans-serif;
     font-weight: bold;
+    
 }
 
 nav {
@@ -150,6 +151,8 @@ table tbody th {
     display: flex;
     gap: 20px;
     flex-wrap: nowrap;
+    width: 100%;
+    flex-direction: row;
 }
 
 .kartuReminder {
@@ -257,4 +260,57 @@ h2 {
 
 .Tidur {
     background-color: #ce9e25;
+}
+
+@media (max-width: 768px) {
+    html {
+        width: auto;
+    }
+
+    main {
+        padding-top: 60px;
+        padding-bottom: 60px;
+        margin: 10px;
+    }
+
+    #Jadwal h2 {
+        font-size: 15px;
+    }
+
+    .kumpulanReminder {
+        flex-direction: column;
+    }
+    
+    nav img {
+        width: 38px;
+        height: 38px;
+    }
+
+    nav div {
+        display: flex;
+        gap: 5px;
+    }
+
+    nav h1 {
+        color: lightgray;
+        font-size: 15px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    table {
+        border-spacing: 3px;
+    }
+
+    table tbody td, table tbody th {
+        font-size: 9px;
+        padding: 1px;
+    }
+
+    table thead th {
+        font-size: 10px;
+        padding: 3px;
+    }
 }
