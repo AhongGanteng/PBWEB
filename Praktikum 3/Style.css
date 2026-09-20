@@ -18,6 +18,13 @@ main {
     gap: 20px;
 }
 
+main > section { 
+    flex: 3; 
+}
+main > aside   { 
+    flex: 1; 
+}
+
 h2 {
     color: #080d1a;
 }
