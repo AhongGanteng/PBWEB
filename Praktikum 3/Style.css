@@ -172,7 +172,6 @@ table tbody th {
 }
 
 .kartuReminder {
-    flex: 1;
     padding: 20px;
     background-color: rgb(220, 216, 216);
     border-radius: 10px;
