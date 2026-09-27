@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+    <div class="kalkulator">
+        <!-- Tampilan Layar -->
+        <div class="tampilan">
+            <div id="riwayat"></div>
+            <div id="hasil">0</div>
+        </div>
+        
+        <!-- button -->
+        <div class="button">
+            <button class="function" id="backspace" onclick="backspace()">⌫</button>
+            <button class="function" value="%" onclick="input(this)">%</button>
+            <button class="function" id="clearAll" onclick="hapusSemua()">C</button>
+            <button class="operator" value="/" onclick="input(this)">÷</button>
+
+            <button class="number" value="7" onclick="input(this)">7</button>
+            <button class="number" value="8" onclick="input(this)">8</button>
+            <button class="number" value="9" onclick="input(this)">9</button>
+            <button class="operator" value="*" onclick="input(this)">x</button>
+
+            <button class="number" value="4" onclick="input(this)">4</button>
+            <button class="number" value="5" onclick="input(this)">5</button>
+            <button class="number" value="6" onclick="input(this)">6</button>
+            <button class="operator" value="-" onclick="input(this)">-</button>
+
+            <button class="number" value="1" onclick="input(this)">1</button>
+            <button class="number" value="2" onclick="input(this)">2</button>
+            <button class="number" value="3" onclick="input(this)">3</button>
+            <button class="operator" value="+" onclick="input(this)">+</button>
+
+            <button class="number" value="0" onclick="input(this)">0</button>
+            <button id="decimal" value="." onclick="input(this)">.</button>
+            <button id="equals" onclick="hitung()">=</button>
+        </div>
+    </div>
+    <script src="ScriptKalkulator.js"></script>
+</body>
+</html>
