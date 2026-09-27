@@ -1,12 +1,12 @@
 let expression = "";
 
 const hasil = document.getElementById("hasil");
-
+//=========== FUNCTION INPUT ===========
 function input(button) {
     let value = button.value;
 
-    if (expression === "" || value === "+" || 
-        value === "/" || value ==="*") {
+    if (expression === "" && (value === "+" || 
+        value === "/" || value ==="*")) {
             return;
     }
 
@@ -24,30 +24,29 @@ function input(button) {
     hasil.innerText = expression;
 }
 
+//=========== FUNCTION HITUNG ===========
+
 function hitung() {
     let angka = expression;
     let hasilPerhitungan = eval(angka);
-    hasil.innerText = expression;
+    hasil.innerText = hasilPerhitungan;
     expression = hasilPerhitungan.toString();
 }
+
+//=========== FUNCTION C ===========
 
 function hapusSemua() {
     expression = "";
     hasil.innerText = 0;
 }
 
+//=========== FUNCTION BACKSPACE ===========
+
 function backspace() {
-
     expression = expression.slice(0, -1);
-
     if (expression === "") {
-
         hasil.innerText = "0";
-
     } else {
-
         hasil.innerText = expression;
-
     }
-
 }
