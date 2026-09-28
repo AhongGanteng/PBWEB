@@ -22,7 +22,7 @@ body {
 }
 
 h1 {
-    margin-top: 0;
+    margin-top: 10px;
     margin-bottom: 25px;
     text-align: center;
     font-size: 25px;
@@ -35,7 +35,7 @@ h1 {
 }
 
 label {
-    margin-top: 6px;
+    margin-top: 10px;
     margin-bottom: 6px;
     font-weight: bold;
 }
@@ -49,18 +49,15 @@ input {
 
 input:focus {
     outline: none;
-    border-radius: #4a90e2;
+    border-color: #4a90e2;
 }
 
 button {
     padding: 10px;
-
     border: none;
     border-radius: 7px;
-
     background-color: #4a90e2;
     color: white;
-
     font-size: 15px;
     cursor: pointer;
 }
@@ -69,8 +66,11 @@ button:hover {
     background-color: #357abd;
 }
 
-.buttons button:last-child {
-    grid-column: span 2;
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 6px;
 }
 
 #hasil {

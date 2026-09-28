@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>kalkulator Sederhana</title>
     <link rel="stylesheet" href="Style.css">
 </head>
 <body>
@@ -11,11 +11,11 @@
         <h1>KALKULATOR SEDERHANA</h1>
         <div class="input">
             <label>Bilangan 1</label>
-            <input id="Bilangan 1" type="number" placeholder="Masukkan bilangan 1">
+            <input id="Bilangan1" type="number" placeholder="Masukkan bilangan 1">
         </div>
         <div class="input">
             <label>Bilangan 2</label>
-            <input id="Bilangan 2" type="number" placeholder="Masukkan bilangan 2">
+            <input id="Bilangan2" type="number" placeholder="Masukkan bilangan 2">
         </div>
         <div class="buttons">
             <button onclick="Tambah()">
@@ -33,9 +33,12 @@
             <button onclick="Modulus()">
                 Modulus
             </button>
+            <button onclick="HapusHasil()"> 
+                Hapus hasil
+            </button>
         </div>
         <div class="hasil">
-            <label>Hasil = </label>
+            <label>Hasil</label>
             <input id="hasil" readonly>
         </div>
     </div>
