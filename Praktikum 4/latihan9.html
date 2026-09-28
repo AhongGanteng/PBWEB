@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar Javascript Platfrom</title>
+</head>
+<body>
+    <h1>Belajar Javascript</h1>
+    <div id="hasil"></div>
+    <script>
+        var warna = "merah";
+        switch (warna) {
+            case "hitam": 
+                text = "warna hitam";
+                break;
+            case "merah": 
+                text = "warna merah";
+                break;
+            case "hijau":
+                text = "warna hijau";
+                break;
+            default:
+                text = "warna tidak terdeteksi";
+                break;
+        }
+        document.getElementById("hasil").innerHTML= text;
+    </script>
+</body>
+</html>

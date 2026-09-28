@@ -1,52 +1,30 @@
-let expression = "";
-
-const hasil = document.getElementById("hasil");
-//=========== FUNCTION INPUT ===========
-function input(button) {
-    let value = button.value;
-
-    if (expression === "" && (value === "+" || 
-        value === "/" || value ==="*")) {
-            return;
-    }
-
-    if (value === "+" || value === "-" || 
-        value === "/" || value ==="*") {
-
-        let operatorTerakhir = expression.slice(-1);
-
-        if (operatorTerakhir === "+" || operatorTerakhir === "-" || 
-            operatorTerakhir === "/" || operatorTerakhir ==="*") {
-                expression = expression.slice(0, -1);
-        }
-    }
-    expression += button.value
-    hasil.innerText = expression;
+function Tambah() {
+    let bilangan1 = Number(document.getElementById("Bilangan 1").value);
+    let bilangan2 = Number(document.getElementById("Bilangan 2").value);
+    document.getElementById("hasil").value = bilangan1 + bilangan2;
 }
 
-//=========== FUNCTION HITUNG ===========
-
-function hitung() {
-    let angka = expression;
-    let hasilPerhitungan = eval(angka);
-    hasil.innerText = hasilPerhitungan;
-    expression = hasilPerhitungan.toString();
+function Kurang() {
+    let bilangan1 = Number(document.getElementById("Bilangan 1").value);
+    let bilangan2 = Number(document.getElementById("Bilangan 2").value);
+    document.getElementById("hasil").value  = bilangan1 - bilangan2;
 }
 
-//=========== FUNCTION C ===========
-
-function hapusSemua() {
-    expression = "";
-    hasil.innerText = 0;
+function Kali() {
+    let bilangan1 = Number(document.getElementById("Bilangan 1").value);
+    let bilangan2 = Number(document.getElementById("Bilangan 2").value);
+    document.getElementById("hasil").value = bilangan1 * bilangan2;
 }
 
-//=========== FUNCTION BACKSPACE ===========
-
-function backspace() {
-    expression = expression.slice(0, -1);
-    if (expression === "") {
-        hasil.innerText = "0";
-    } else {
-        hasil.innerText = expression;
-    }
+function Bagi() {
+    let bilangan1 = Number(document.getElementById("Bilangan 1").value);
+    let bilangan2 = Number(document.getElementById("Bilangan 2").value);
+    document.getElementById("hasil").value = bilangan1 / bilangan2;
 }
+
+function Modulus() {
+    let bilangan1 = Number(document.getElementById("Bilangan 1").value);
+    let bilangan2 = Number(document.getElementById("Bilangan 2").value);
+    document.getElementById("hasil").value = bilangan1 % bilangan2;
+}
+

@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: #1e1e1e;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.kalkulator {
+    width: 390px;
+    padding: 10px;
+    background-color: #202124;
+}
+
+/* Tampilan */
+
+.tampilan {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 10px 15px;
+    color: white;
+}
+
+#riwayat {
+    height: 30px;
+    color: #aaa;
+    font-size: 16px;
+}
+
+#hasil {
+    font-size: 48px;
+}
+
+/* Button */
+
+.button {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+}
+
+button {
+    height: 65px;
+    border: none;
+    border-radius: 5px;
+    background-color: #323338;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #41434a;
+}
+
+button:active {
+    background-color: #50525a;
+}
+
+/* Function */
+
+.function {
+    font-size: 18px;
+}
+
+/* Tombol */
+
+#equals {
+    font-size: 24px;
+}
+
+#equals:hover {
+    background-color: #6ccfff;
+}
