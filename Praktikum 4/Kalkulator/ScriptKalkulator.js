@@ -6,7 +6,7 @@ function input(button) {
     let value = button.value;
 
     if (expression === "" && (value === "+" || 
-        value === "/" || value ==="*")) {
+        value === "/" || value ==="*" || value === ".")) {
             return;
     }
 
