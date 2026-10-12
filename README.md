@@ -66,3 +66,17 @@
       inputTglLahir.max = hariIniLokal();
       inputTglLahir.addEventListener("input", validasiTanggalLahir);
   }
+
+Fitur-fitur:
+1. Login menggunakan kode pendaftaran
+2. Pesan kesalahan login
+3. Pengisian formulir pendaftaran calon mahasiswa
+4. Option grup dari javascript
+5. Bisa menampilkan elemen yang hidden
+6. Bisa pilih program studi
+7. Bisa input file berkas
+8. Atribut validasi input formulir
+9. Halaman pendaftaran selesai
+10. Tombol masuk ke formulir pendaftaran
+11. Tombol kirim formulir
+12. Tombol kembali ke halaman login
