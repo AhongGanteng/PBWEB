@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Style.css">
+    <script src="Script.js"></script>
+</head>
+<body>
+    <form id="form-daftar" novalidate>
+        <div class="kolom">
+            <label for="nama">Nama</label>
+            <input id="nama" type="text"
+                required minlength="3" maxlength="20" placeholder="wajib, 3–20 karakter">
+
+            <p id="pesan-nama" class="pesan">Belum diperiksa</p>
+        </div>
+        <div class="kolom">
+            <label for="email">Email</label>
+            <input id="email" type="email" required placeholder="wajib, format email">
+
+            <p id="pesan-email" class="pesan">Belum diperiksa</p>
+        </div>
+        <div class="kolom">
+            <label for="email">Password</label>
+            <input id="email" type="password" pattern=".{8,}" required placeholder="wajib, 8 karakter">
+
+            <p id="pesan-password" class="pesan">Belum diperiksa</p>
+        </div>
+        <div class="kolom">
+            <label for="email">Konfirm Password</label>
+            <input id="email" type="password" pattern=".{8,}" required placeholder="wajib, 8 karakter">
+
+            <p id="pesan-conpassword" class="pesan">Belum diperiksa</p>
+        </div>
+        <div class="aksi">
+            <button type="submit">Periksa form</button>
+            <span id="hasil">Form belum diperiksa</span>
+        </div>
+    </form>
+</body>
+</html>

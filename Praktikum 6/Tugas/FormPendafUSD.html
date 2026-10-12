@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pendaftaran Mahasiswa Baru USD</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+    <form id="form-pendaf">
+        <header>
+            <img src="2025 - LOGO USD RESMI.png" alt="Foto ku">
+            <div id="teks-judul">
+                <h1>Formulir Pendaftaran Mahasiswa Baru 
+                    Universitas Sanata Dharma Yogyakarta
+                </h1>
+                <h4>Mrican, Tromol Pos 29 Yogyakarta 55002, Telp. (0274) 513301 Fax. (0274) 562383
+                    Homepage: http://www.usd.ac.id, E-mail: humas@usd.ac.id
+                </h4>
+            </div>
+            <div>
+                <h2>Jalur Reguler
+                </h2>
+            </div>
+            <div>
+                <div>
+                    <div>
+                        <p>Petunjuk:</p>
+                    </div>
+                    <div>
+                        <ol>
+                            <li>Isilah data di bawah ini dengan jelas dan lengkap</li>
+                            <li>Pilih pada kotak di depan pilihan</li>
+                        </ol>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Nomor pendaftaran (diisi oleh petugas)</h3>
+                    </div>
+                    <div>
+                        <h2> </h2>
+                        <h2> </h2>
+                        <h2> </h2>
+                        <h2> </h2>
+                        <h2> </h2>
+                        <h2> </h2>
+                        <h2> </h2>
+                        <h2> </h2>
+                        <h2> </h2>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div>
+                <ol type="A"> 
+                    <li> 
+                        <p><b>Data Calon Mahasiswa Baru </b></p>
+                        <ol type="1">
+                            <li>
+                                <div>
+                                    <label for="nama-mhs"><b>Nama Lengkap (sesuai dengan STTB/STK): </b></label>
+                                    <input id="nama-mhs" type="text" minlength="1" required placeholder="......................................">
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <label for="tgl-lahir"><b>Tanggal Lahir: </b></label>
+                                    <input id="tgl-lahir" type="date" minlength="1" required placeholder="......................................">
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <p><b>Jenis kelamin: </b></p>
+                                    <input type="radio" id="pria" required name="jenis_kelamin" value="laki-laki">
+                                    <label for="pria">Laki-laki</label><br>
+                                    <input type="radio" id="wanita" required name="jenis_kelamin" value="perempuan">
+                                    <label for="wanita">Perempuan</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <label for="daftar-status"><b>Status: </b></label>
+                                    <select id="daftar-status" required class="kumpulan-status">
+                                        <option value="" disabled selected>Pilih Status</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <label for="daftar-agama"><b>Agama: </b></label>
+                                    <select id="daftar-agama" required name="agama" class="kumpulan-agama">
+                                        <option value="" disabled selected>Pilih Agama</option>
+                                    </select>
+
+                                    <input hidden type="text" id="agamaLain" name="agama_lain" placeholder="Tuliskan agamamu">
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <p><b>Kewarganegaraan: </b></p>
+                                    <input type="radio" id="wni" name="kewarganegaraan" required value="wni">
+                                    <label for="wni">WNI</label><br>
+                                    <input type="radio" id="wna" name="kewarganegaraan" required value="wna">
+                                    <label for="wna">WNA</label>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <label for="input-alamat-asal"><b>Alamat Asal Kabupaten/Kota: </b></label>
+                                    <textarea id="input-alamat-asal" required placeholder="......................." rows="3" cols="50" minlength="1"></textarea>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <label for="telepon-rumah"><b>No. Telepon Rumah: </b></label>
+                                    <input type="number" id="telepon-rumah" name="telepon_rumah">
+
+                                    <label for="nomor-hp"><b>No. HP: </b></label>
+                                    <input type="number" id="nomor-hp" name="nomor_hp" required>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <label for="alamat-email"><b>Alamat E-mail: </b></label>
+                                    <input type="email" id="alamat-email" minlength="1" required placeholder=".......................">
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <label for="nama-ortu"><b>Nama Orang Tua/Wali: </b></label>
+                                    <input id="nama-ortu" type="text" minlength="1" required placeholder="......................................">
+                                    <div>
+                                        <label for="daftar-pendidikan"><b>Tingkat Pendidikan: </b></label>
+                                        <select id="daftar-pendidikan" required class="kumpulan-pendidikan">
+                                            <option value="" disabled selected>Pilih Tingkat Pendidikan</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <p><b>Mahasiswa Tranfer: </b></p>
+                                <input type="radio" id="bukan" name="mhs-tranfer" required value="bukan">
+                                <label for="bukan">Bukan</label><br>
+                                <input type="radio" id="iya" name="mhs-tranfer" required value="iya">
+                                <label for="iya">Iya</label>
+                                <ol type="a" hidden id="form-mhs-transfer">
+                                    <li>
+                                        <label for="asal-perguruan-tinggi"><b>Asal Perguruan Tinggi: </b></label>
+                                        <input type="text" minlength="1" id="asal-perguruan-tinggi" placeholder="..............">
+                                    </li>
+                                    <li>
+                                        <label for="asal-prodi"><b>Asal Program Studi: </b></label>
+                                        <input type="text" minlength="1" id="asal-prodi" placeholder="..............">
+                                    </li>
+                                    <li>
+                                        <p><b>Status Mahasiswa Tranfer</b></p>
+                                        <input type="radio" id="sudah-terakreditasi" name="status-mhs-transfer" value="sudah-terakreditasi">
+                                        <label for="sudah-terakreditasi">Terakreditasi dengan nilai </label>
+                                        <input type="text" id="nilai-sudah-terakreditasi" hidden minlength="1" placeholder="...">
+                                        <input type="radio" id="belum-terakreditasi" name="status-mhs-transfer" value="belum-terakreditasi">
+                                        <label for="belum-terakreditasi">Belum Terakreditasi</label>
+                                    </li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        <p><b>Program Studi Yang Dipilih</b></p>
+
+                        <ol>
+                            <li>
+                                <label for="pilihan-1">Pilihan I:</label>
+                                <select id="pilihan-1" name="pilihan_1" class="pilihan-prodi">
+                                    <option value="" disabled selected>Pilih program studi</option>
+                                </select>
+                            </li>
+
+                            <li>
+                                <label for="pilihan-2">Pilihan II:</label>
+                                <select id="pilihan-2" name="pilihan_2" class="pilihan-prodi">
+                                    <option value="" disabled selected>Pilih program studi</option>
+                                </select>
+                            </li>
+
+                            <li>
+                                <label for="pilihan-3">Pilihan III:</label>
+                                <select id="pilihan-3" name="pilihan_3" class="pilihan-prodi">
+                                    <option value="" disabled selected>Pilih program studi</option>
+                                </select>
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        <p><b>Data SMA/SMK/SMF/MAN</b></p>
+                        <ol type="1">
+                            <li>
+                                <label for="nama-sekolah"><b>Nama Sekolah Menengah: </b></label>
+                                <input type="text" minlength="1" required id="nama-sekolah" placeholder="................">
+                            </li>
+                            <li>
+                                <label for="telepon">Telepon: </label>
+                                <input type="text" minlength="1" required id="telepon" placeholder="..............">
+                            </li>
+                            <li>
+                                <label for="alamat-sekolah">Alamat Sekoloah Kabupaten/Kota Provinsi: </label>
+                                <input type="text" minlength="1" required id="alamat-sekolah" placeholder="................">
+                            </li>
+                            <li>
+                                <label for="sttb">Bagi Yang Sudah Lulus/Memiliki Ijazah STTB Tahun: </label>
+                                <input type="text" minlength="1" required id="sttb" placeholder="................">
+                            </li>
+                            <li>
+                                <p><b>Data NEM/STK/SKHUN</b></p>
+                                <ol type="a">
+                                    <li>
+                                        <label for="tahun">Tahun: </label>
+                                        <input type="text" minlength="1" required id="tahun" placeholder=".................">
+                                    </li>
+                                    <li>
+                                        <label for="jumlah-nilai">Jumlah Nilai: </label>
+                                        <input type="text" minlength="1" required id="jumlah-nilai" placeholder="................">
+                                    </li>
+                                    <li>
+                                        <label for="jumlah-mata-pelajaran">Jumlah Mata Pelajaran: </label>
+                                        <input type="text" minlength="1" required id="jumlah-mata-pelajaran" placeholder="................">
+                                    </li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        <p><b>Data Prestasi Siswa</b></p>
+                        <ol type="1">
+                            <li>
+                                <label for="rapor">Foto Rapor: </label>
+                                <input id="rapor" type="file" required placeholder="Input file .pdf disini">
+                            </li>
+                            <li>
+                                <label for="ijazah">Ijazah/SKL: </label>
+                                <input id="ijazah" type="file" required placeholder="Input file .pdf disini">
+                            </li>
+                            <li>
+                                <label for="prestasi-akademik">Prestasi akademik (opsional): </label>
+                                <input id="prestasi-akademik" type="file" placeholder="Input file .pdf disini">
+                            </li>
+                            <li>
+                                <label for="prestasi-nonakademik">Prestasi nonakademik (opsional): </label>
+                                <input id="prestasi-nonakademik" type="file" placeholder="Input file .pdf disini">
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+            <button type="submit">Kirim Formulir</button>
+        </main>
+        <footer>
+            <p>@2026 Formulir Pendaftaran Mahasiswa Baru Universitas Sanata Dharma</p>
+            </footer>
+    </form>
+    <script src="Script.js"></script>
+</body>
+</html>

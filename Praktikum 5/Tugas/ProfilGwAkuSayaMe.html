@@ -497,10 +497,10 @@
 
             <form id="form-komentar" class="form-fitur" novalidate>
                 <label for="input-nama">Nama</label>
-                <input id="input-nama" type="text" required>
+                <input id="input-nama" pattern=".{3,20}" type="text" required placeholder="Nama minimal 3 - 20 karakter">
 
                 <label for="input-pesan">Komentar</label>
-                <textarea id="input-pesan" rows="3" required></textarea>
+                <textarea id="input-pesan" rows="3" minlength="1" required placeholder="Komentar minimal 1 karakter"></textarea>
 
                 <p id="error-komentar" class="pesan-error"
                 aria-live="polite"></p>

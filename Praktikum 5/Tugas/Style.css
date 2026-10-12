@@ -47,6 +47,7 @@ p {
     --warna-tableTerang: #cdf7c9;
     --warna-tdTerang: #fffef9;
     --warna-teksTdGelap: #080d1a;
+}
 
 body {
     background-color: var(--warna-latar);
@@ -531,5 +532,4 @@ footer {
     .biodata {
         grid-template-columns: 1fr;
     }
-}
 }
