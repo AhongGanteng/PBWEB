@@ -184,10 +184,10 @@ for (const pilihanStatus of semuaStatus) {
     }
 }
 
+const kodePendaf = "123456789";
 const formLogin = document.getElementById("form-login");
 const inputKode = document.getElementById("kode-pembayaran");
 if (formLogin && inputKode) {
-    const kodePendaf = "123456789";
 
     inputKode.addEventListener("input", function () {
         inputKode.setCustomValidity("");
@@ -242,5 +242,36 @@ radioStatusMhsTranfer.forEach(function(radio) {
         const tampil = (radio.value === "sudah-terakreditasi");
         statusMhsTranfer.hidden = !tampil;
         statusMhsTranfer.querySelector("input").required = tampil;
-    })
-})
+    });
+});
+
+const kotakNomor = document.querySelectorAll("#nomor-pendaftaran h2");
+
+kotakNomor.forEach(function (kotak, index) {
+    kotak.textContent = kodePendaf[index] || "";
+});
+
+const inputTglLahir = document.getElementById("tgl-lahir");
+
+function hariIniLokal() {
+    const sekarang = new Date();
+    const tahun = sekarang.getFullYear();
+    const bulan = String(sekarang.getMonth() + 1).padStart(2, "0");
+    const tanggal = String(sekarang.getDate()).padStart(2, "0");
+    return `${tahun}-${bulan}-${tanggal}`;
+}
+
+function validasiTanggalLahir() {
+    inputTglLahir.setCustomValidity("");
+
+    if (inputTglLahir.value === "") return;
+
+    if (inputTglLahir.value > hariIniLokal()) {
+        inputTglLahir.setCustomValidity("Tanggal lahir tidak boleh di masa depan!");
+    }
+}
+
+if (inputTglLahir) {
+    inputTglLahir.max = hariIniLokal();
+    inputTglLahir.addEventListener("input", validasiTanggalLahir);
+}

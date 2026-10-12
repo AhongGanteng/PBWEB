@@ -4,23 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="StyleTerang.css">
 </head>
-<body>
+<body id="body-login">
     <form id="form-login">
         <header>
-            <div>
+            <div id="judul-login">
                 <img src="2025 - LOGO USD RESMI.png">
-                <h1>Formulir Pendaftaran</h1>
+                <h1>Formulir Pendaftaran Universitas Sanata Dharma</h1>
             </div>
         </header>
-        <main>
-            <div>
-                <label for="kode-pembayaran">Kode Pembayaran</label>
-                <input id="kode-pembayaran" type="number" required minlength="1" placeholder="Harus angka!">
-            </div>
-            <div>
-                <button type="submit">Login</button>
+        <main class="login-layout">
+            <section class="login-welcome">
+                <p class="login-kicker">Penerimaan Mahasiswa Baru</p>
+                <h2>
+                    Awali perjalananmu<br>
+                    di Sanata Dharma.
+                </h2>
+                <p>
+                    Belajar dengan pikiran yang terbuka.<br>
+                    Bertumbuh dengan kepedulian pada sesama.
+                </p>
+                <p class="login-motto">Cerdas dan Humanis</p>
+            </section>
+            <div class="login-card">
+                <h2>Selamat datang.</h2>
+                <p>
+                    Gunakan kode pembayaran untuk membuka
+                    formulir pendaftaran.
+                </p>
+                <label for="kode-pembayaran">Kode Pendaftaran</label>
+                <input id="kode-pembayaran" name="kode_pembayaran" type="text" inputmode="numeric" pattern="[0-9]{9}" maxlength="9" placeholder="Masukkan 9 digit kode" required>
+                <small>Kode pembayaran terdiri dari 9 digit angka.</small>
+                <button type="submit">Masuk ke formulir →</button>
             </div>
         </main>
     </form>

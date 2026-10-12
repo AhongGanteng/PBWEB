@@ -1,0 +1,516 @@
+:root {
+    --warna-latar: #EAF1F5;
+    --warna-panel: #FFFFFF;
+
+    --warna-teks: #231F20;
+    --warna-keterangan: #6D625A;
+
+    --warna-border: #E8DED2;
+    --warna-latar-aktif: #F7EFE3;
+
+    --warna-jingga: #E0862F;
+    --warna-kuning: #F5EB0C;
+    --warna-merah-tua: #90282C;
+
+    --warna-tombol: #90282C;
+    --warna-teks-tombol: #FFFFFF;
+
+    --warna-bayangan: #231F2005;
+}
+
+body {
+    margin: 0;
+    background: var(--warna-latar);
+    color: var(--warna-teks);
+}
+
+/* ================== Halaman Selesai ================== */
+
+#form-selesai {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+#form-selesai header {
+    padding: 24px;
+    background: var(--warna-panel);
+    border-bottom: 4px solid var(--warna-jingga);
+}
+
+#form-selesai header > div {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+#form-selesai header img {
+    width: 70px;
+    height: auto;
+}
+
+#form-selesai header h1 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 28px;
+}
+
+#form-selesai main {
+    display: block;
+    width: calc(100% - 40px);
+    max-width: 650px;
+    margin: auto;
+    padding: 32px 0;
+    box-sizing: border-box;
+    background: transparent;
+}
+
+#form-selesai main > div {
+    padding: 36px;
+    background: var(--warna-panel);
+    border: 1px solid var(--warna-border);
+    border-top: 4px solid var(--warna-jingga);
+    border-radius: 12px;
+    box-shadow: 0 6px 20px var(--warna-bayangan);
+    text-align: center;
+}
+
+#form-selesai main > div::before {
+    content: "✓";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+
+    background: var(--warna-latar-aktif);
+    color: var(--warna-merah-tua);
+    font-size: 30px;
+}
+
+#form-selesai main h3 {
+    margin: 0 0 28px;
+    color: var(--warna-teks);
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 1.8;
+}
+
+#form-selesai main button {
+    min-height: 44px;
+    padding: 12px 24px;
+    border: 0;
+    border-radius: 6px;
+
+    background: var(--warna-tombol);
+    color: var(--warna-teks-tombol);
+    font: inherit;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    #form-selesai header img {
+        width: 50px;
+    }
+
+    #form-selesai header h1 {
+        font-size: 22px;
+    }
+
+    #form-selesai main > div {
+        padding: 24px;
+    }
+
+    #form-selesai main h3 {
+        font-size: 16px;
+    }
+}
+
+/* ================== Halaman Login ================== */
+
+#form-login header {
+    padding: 24px;
+    background: var(--warna-panel);
+    border-bottom: 4px solid var(--warna-jingga);
+    text-align: center;
+}
+
+#form-login header > div {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+#form-login header img {
+    width: 70px;
+    height: auto;
+}
+
+#form-login header h1 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 28px;
+}
+
+#form-login {
+    min-height: 100vh;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(129, 54, 72, 0.99),
+            rgba(35, 31, 32, 0.45)
+        ),
+        url("images.jpg");
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#form-login .login-layout {
+    width: calc(100% - 40px);
+    max-width: 1000px;
+    margin: auto;
+    padding: 32px 0;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 48px;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    text-align: left;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+#form-login .login-layout h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: normal;
+    margin: 0 0 12px;
+}
+
+#form-login .login-layout p {
+    color: var(--warna-latar-aktif);
+    line-height: 1.6;
+}
+
+#form-login .login-welcome h2 {
+    font-size: 40px;
+    line-height: 1.2;
+    color: var(--warna-panel);
+}
+
+#form-login .login-welcome .login-kicker {
+    color: var(--warna-kuning);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+#form-login .login-welcome .login-motto {
+    display: inline-block;
+    color: var(--warna-kuning);
+    border-bottom: 3px solid var(--warna-jingga);
+    padding-bottom: 6px;
+}
+
+#form-login .login-card {
+    background: var(--warna-panel);
+    color: var(--warna-teks);
+    border: 1px solid var(--warna-border);
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 6px 20px var(--warna-bayangan);
+}
+
+#form-login .login-card h2 {
+    font-size: 28px;
+}
+
+#form-login .login-card > p {
+    margin-bottom: 24px;
+    font-size: 14px;
+    color: var(--warna-teks);
+}
+
+#form-login .login-card label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+#form-login .login-card input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid var(--warna-border);
+    border-radius: 6px;
+    background: var(--warna-panel);
+    color: var(--warna-teks);
+    font: inherit;
+}
+
+#form-login .login-card small {
+    display: block;
+    margin-top: 8px;
+    color: var(--warna-keterangan);
+}
+
+#form-login .login-card button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    border: 0;
+    border-radius: 6px;
+    background: var(--warna-tombol);
+    color: var(--warna-teks-tombol);
+    font: inherit;
+    cursor: pointer;
+}
+
+@media (max-width: 700px) {
+    #form-login .login-layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        margin: 24px auto;
+    }
+
+    #form-login .login-welcome h2 {
+        font-size: 32px;
+    }
+
+    #form-login .login-card {
+        padding: 24px;
+    }
+}
+
+/* ================== Halaman Formulir Pendaftaran ================== */
+
+#form-pendaf {
+    display: block;
+    width: calc(100% - 40px);
+    max-width: 950px;
+    margin: 32px auto;
+    color: var(--warna-teks);
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+#form-pendaf * {
+    box-sizing: border-box;
+}
+
+#form-pendaf header {
+    display: block;
+    padding: 28px;
+    margin-bottom: 28px;
+    background: var(--warna-panel);
+    border-bottom: 4px solid var(--warna-jingga);
+    border-radius: 10px;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+#form-pendaf header img {
+    display: block;
+    width: 90px;
+    height: auto;
+    margin: 0 auto 16px;
+}
+
+#form-pendaf header h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 28px;
+    line-height: 1.3;
+}
+
+#form-pendaf header h4 {
+    color: var(--warna-keterangan);
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 1.6;
+}
+
+#form-pendaf header ol {
+    max-width: 600px;
+    margin: 16px auto;
+    text-align: left;
+}
+
+#form-pendaf #nomor-pendaftaran {
+    display: flex;
+    gap: 4px;
+    width: 100%;
+    max-width: 360px;
+    margin: 16px auto;
+}
+
+#form-pendaf #nomor-pendaftaran h2 {
+    flex: 1;
+    min-width: 0;
+    height: 40px;
+    margin: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--warna-border);
+    border-radius: 4px;
+    background: var(--warna-latar);
+    color: var(--warna-teks);
+    font-size: 20px;
+}
+
+#form-pendaf main {
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
+
+#form-pendaf main > div {
+    display: block;
+}
+
+#form-pendaf main > div > ol {
+    display: block;
+    margin: 0;
+    padding-left: 26px;
+}
+
+#form-pendaf main > div > ol > li {
+    margin-bottom: 24px;
+    padding: 24px;
+    background: var(--warna-panel);
+    border: 1px solid var(--warna-border);
+    border-top: 4px solid var(--warna-jingga);
+    border-radius: 10px;
+    box-shadow: 0 4px 16px var(--warna-bayangan);
+}
+
+#form-pendaf main > div > ol > li > p {
+    margin: 0 0 24px;
+    color: var(--warna-merah-tua);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 24px;
+}
+
+#form-pendaf main > div > ol > li > p > b {
+    font-weight: normal;
+}
+
+#form-pendaf main ol ol {
+    padding-left: 24px;
+}
+
+#form-pendaf main li li {
+    margin-bottom: 20px;
+}
+
+#form-pendaf main label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+#form-pendaf input:not([type="radio"]):not([type="checkbox"]),
+#form-pendaf select,
+#form-pendaf textarea {
+    display: block;
+    width: 100%;
+    min-height: 44px;
+    margin-bottom: 16px;
+    padding: 12px;
+
+    background: var(--warna-panel);
+    color: var(--warna-teks);
+    border: 1px solid var(--warna-border);
+    border-radius: 6px;
+    font: inherit;
+}
+
+#form-pendaf textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+#form-pendaf input[type="radio"],
+#form-pendaf input[type="checkbox"] {
+    display: inline-block;
+    width: auto;
+    margin: 0 8px 0 0;
+    vertical-align: middle;
+    accent-color: var(--warna-tombol);
+}
+
+#form-pendaf input[type="radio"] + label,
+#form-pendaf input[type="checkbox"] + label {
+    display: inline;
+}
+
+#form-pendaf input:focus-visible,
+#form-pendaf select:focus-visible,
+#form-pendaf textarea:focus-visible {
+    outline: 2px solid var(--warna-merah-tua);
+    outline-offset: 2px;
+}
+
+#form-pendaf [hidden] {
+    display: none !important;
+}
+
+#form-pendaf main button[type="submit"] {
+    display: block;
+    width: 100%;
+    min-height: 44px;
+    padding: 14px;
+
+    background: var(--warna-tombol);
+    color: var(--warna-teks-tombol);
+    border: 0;
+    border-radius: 6px;
+    font: inherit;
+    cursor: pointer;
+}
+
+#form-pendaf footer {
+    margin-top: 24px;
+    text-align: center;
+    color: var(--warna-keterangan);
+    font-size: 13px;
+}
+
+#form-pendaf main > div > #tipe-A {
+    list-style: none;
+}
+
+@media (max-width: 700px) {
+    #form-pendaf {
+        width: calc(100% - 24px);
+        margin: 16px auto;
+    }
+
+    #form-pendaf header {
+        padding: 20px;
+    }
+
+    #form-pendaf header h1 {
+        font-size: 23px;
+    }
+
+    #form-pendaf main > div > ol > li {
+        padding: 16px;
+    }
+}
