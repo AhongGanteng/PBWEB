@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Proyek latihan HTML dan CSS responsif: halaman komunitas belajar Ruang Kode.">
+  <title>Ruang Kode — Belajar, coba, pahami</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#konten">Lewati navigasi</a>
+
+  <header class="site-header">
+    <div class="container header-layout">
+      <a class="brand" href="#beranda" aria-label="Ruang Kode, ke beranda">
+        <span class="brand-mark" aria-hidden="true">{ }</span>
+        Ruang Kode
+      </a>
+      <nav aria-label="Navigasi utama">
+        <ul class="nav-list">
+          <li><a href="#materi">Materi</a></li>
+          <li><a href="#cara-belajar">Cara belajar</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="konten" tabindex="-1">
+    <section class="hero section" id="beranda" aria-labelledby="hero-title">
+      <div class="container hero-layout">
+        <div class="hero-copy stack">
+          <p class="eyebrow">KOMUNITAS BELAJAR WEB</p>
+          <h1 id="hero-title">Web yang rapi dimulai dari dasar yang kamu pahami.</h1>
+          <p class="lead">Belajar HTML dan CSS lewat contoh kecil, percobaan langsung, dan proyek yang tumbuh bersama kemampuanmu.</p>
+          <div class="actions">
+            <a class="button" href="#materi">Jelajahi materi</a>
+            <a class="button button--secondary" href="#cara-belajar">Lihat cara belajar</a>
+          </div>
+          <ul class="hero-notes" aria-label="Keunggulan materi">
+            <li>Tanpa framework</li>
+            <li>Contoh bisa diubah</li>
+            <li>Nyaman di ponsel</li>
+          </ul>
+        </div>
+
+        <aside class="learning-board" aria-labelledby="board-title">
+          <div class="board-heading">
+            <p class="eyebrow">PETA BELAJARMU</p>
+            <span class="pill">Mulai dari sini</span>
+          </div>
+          <h2 id="board-title">Satu konsep, satu percobaan.</h2>
+          <ol class="steps">
+            <li><span class="step-number" aria-hidden="true">01</span><div><h3>Pahami strukturnya</h3><p>Kenali elemen dan hubungan induk-anak.</p></div></li>
+            <li><span class="step-number" aria-hidden="true">02</span><div><h3>Atur tampilannya</h3><p>Mulai dari jarak, ukuran, lalu tata letak.</p></div></li>
+            <li><span class="step-number" aria-hidden="true">03</span><div><h3>Uji di berbagai lebar</h3><p>Amati kapan konten perlu disusun ulang.</p></div></li>
+          </ol>
+          <p class="board-footnote">Coba perkecil jendela browser. Perhatikan kapan dua kolom berubah menjadi satu.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section section--muted" id="materi" aria-labelledby="materi-title">
+      <div class="container">
+        <div class="section-heading stack">
+          <p class="eyebrow">MATERI PILIHAN</p>
+          <h2 id="materi-title">Bangun pemahamanmu, selangkah demi selangkah.</h2>
+          <p>Kartu di bawah memakai CSS Grid. Lebar yang tersedia menentukan berapa kolom yang muat.</p>
+        </div>
+        <div class="course-grid">
+          <article class="course-card">
+            <div class="course-art course-art--html" aria-hidden="true"><span>&lt;html&gt;</span></div>
+            <div class="course-body stack">
+              <p class="eyebrow">01 / STRUKTUR</p>
+              <h3>HTML yang bermakna</h3>
+              <p>Susun judul, navigasi, artikel, dan tautan dengan elemen yang sesuai.</p>
+              <a class="text-link" href="#cara-belajar">Lihat langkah latihan HTML</a>
+            </div>
+          </article>
+          <article class="course-card">
+            <div class="course-art course-art--css" aria-hidden="true"><span>.kartu { }</span></div>
+            <div class="course-body stack">
+              <p class="eyebrow">02 / TAMPILAN</p>
+              <h3>CSS yang masuk akal</h3>
+              <p>Pelajari cascade, box model, Flexbox, dan Grid melalui perubahan kecil yang bisa kamu jelaskan.</p>
+              <a class="text-link" href="#cara-belajar">Lihat langkah latihan CSS</a>
+            </div>
+          </article>
+          <article class="course-card">
+            <div class="course-art course-art--responsive" aria-hidden="true"><span>@media</span></div>
+            <div class="course-body stack">
+              <p class="eyebrow">03 / RESPONSIF</p>
+              <h3>Nyaman di berbagai layar</h3>
+              <p>Jaga keterbacaan dan susun ulang konten berdasarkan ruang yang benar-benar tersedia.</p>
+              <a class="text-link" href="#cara-belajar">Lihat langkah latihan responsif</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cara-belajar" aria-labelledby="cara-title">
+      <div class="container practice-layout">
+        <div class="stack">
+          <p class="eyebrow">CARA BELAJAR</p>
+          <h2 id="cara-title">Prediksi dulu. Ubah kode. Periksa hasilnya.</h2>
+          <p>Setiap percobaan punya tujuan. Dengan begitu, kamu tahu mengapa tampilan berubah.</p>
+        </div>
+        <ol class="practice-list">
+          <li><h3>Ubah satu hal</h3><p>Ganti nilai <code>gap</code> dari <code>1.5rem</code> menjadi <code>3rem</code>. Amati jarak antarkartu.</p></li>
+          <li><h3>Periksa ukuran</h3><p>Buka DevTools, pilih elemen, lalu lihat bagian Box Model dan Computed.</p></li>
+          <li><h3>Jelaskan dengan kalimatmu</h3><p>Misalnya: “Kartu turun ke baris baru karena lebar minimum setiap kolom tidak lagi muat.”</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section--muted" id="faq" aria-labelledby="faq-title">
+      <div class="container faq-container">
+        <div class="section-heading stack">
+          <p class="eyebrow">PERTANYAAN UMUM</p>
+          <h2 id="faq-title">Mulai dengan yang kamu punya.</h2>
+        </div>
+        <div class="faq-list">
+          <details><summary>Apakah perlu menginstal framework?</summary><p>Tidak. Proyek ini cukup dibuka di browser. Kamu dapat mengedit index.html dan styles.css memakai editor teks.</p></details>
+          <details><summary>Mengapa navigasinya tetap terlihat di ponsel?</summary><p>Tautannya sedikit, jadi navigasi bisa membungkus ke baris berikutnya. Ini menjaga semua tujuan tetap bisa diakses.</p></details>
+          <details><summary>Apa yang harus kucoba lebih dulu?</summary><p>Ubah warna utama, jarak antarkartu, dan lebar maksimum container. Lakukan satu per satu agar hubungan sebab-akibatnya jelas.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-layout">
+      <p>Ruang Kode — proyek latihan HTML &amp; CSS.</p>
+      <a href="#beranda">Kembali ke atas</a>
+    </div>
+  </footer>
+</body>
+</html>

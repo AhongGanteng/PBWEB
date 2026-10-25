@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lab 05 — Umur state</title><link rel="stylesheet" href="../../assets/lab.css"><script src="app.js" defer></script></head>
+<body><main><a href="../../index.html">Daftar latihan</a><h1>Tiga tempat, tiga umur data.</h1><p>Tambah penghitung, lalu reload halaman. Bandingkan hasilnya. Untuk penyimpanan yang konsisten, gunakan localhost dengan host dan port yang sama.</p><div class="grid">
+  <section class="panel"><h2>Memory</h2><p id="memory-value">0</p><button data-area="memory" type="button">Tambah memory</button><p>Variabel JS. Kembali nol setelah reload.</p></section>
+  <section class="panel"><h2>sessionStorage</h2><p id="session-value">0</p><button data-area="session" type="button">Tambah session</button><p>Bertahan saat reload pada page session yang sama. Tab baru dapat memulai sesi lain.</p></section>
+  <section class="panel"><h2>localStorage</h2><p id="local-value">0</p><button data-area="local" type="button">Tambah local</button><p>Dapat bertahan lintas page session pada origin yang sama, sampai dihapus atau dibatasi browser.</p></section>
+</div><p id="status" role="status"></p><button id="reset" type="button">Hapus penghitung demo ini</button><p class="hint">Tombol reset hanya menghapus dua key milik latihan ini, bukan seluruh storage website. sessionStorage tab yang dibuka melalui opener dapat dimulai dari salinan; ia tidak menjadi satu penyimpanan bersama.</p></main></body></html>

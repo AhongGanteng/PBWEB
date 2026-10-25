@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab 02 — Flexbox dan Grid</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 1rem; background: #f2f6f5; color: #172b27; font-family: system-ui, sans-serif; line-height: 1.65; }
+    main { max-width: 64rem; margin-inline: auto; }
+    h1, h2 { line-height: 1.2; }
+    a { color: #176b52; }
+    label { display: inline-block; padding: 0.75rem 0.5rem; cursor: pointer; }
+    input { accent-color: #176b52; }
+    :focus-visible { outline: 3px solid #123fbc; outline-offset: 4px; }
+    .playground { display: grid; gap: 1.5rem; margin-block: 1.5rem; }
+    .panel { min-width: 0; padding: 1.25rem; border: 1px solid #c6d5cf; border-radius: 1rem; background: white; }
+    .scroll-region { max-width: 100%; overflow-x: auto; padding: 0.5rem; }
+    .flex-demo { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .flex-demo > .item { flex: 1 1 12rem; }
+    .grid-demo { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: 1rem; }
+    .item { padding: 1rem; border: 1px solid #176b52; border-radius: 0.5rem; background: #dcece5; color: #15523e; overflow-wrap: anywhere; }
+    .item:nth-child(2n) { background: #e5e7fb; color: #3d4383; border-color: #3d4383; }
+
+    /* Checkbox native dapat mengubah presentasi melalui :checked. */
+    #arah:checked ~ .playground .flex-demo { flex-direction: column; }
+    #bungkus:checked ~ .playground .flex-demo { flex-wrap: nowrap; }
+  </style>
+</head>
+<body>
+  <main>
+    <a href="../proyek/index.html">Lihat proyek lengkap</a>
+    <h1>Bandingkan distribusi ruang Flexbox dan Grid.</h1>
+    <p>Ubah lebar jendela agar jumlah item per baris berubah. Perhatikan baris terakhir. Kontrol di bawah mengubah Flexbox; Grid tetap sebagai pembanding.</p>
+    <input id="arah" type="checkbox">
+    <label for="arah">Ubah Flexbox menjadi kolom</label>
+    <input id="bungkus" type="checkbox">
+    <label for="bungkus">Cegah pembungkusan Flexbox</label>
+    <div class="playground">
+      <section class="panel" aria-labelledby="flex-title">
+        <h2 id="flex-title">Flexbox</h2>
+        <div class="scroll-region" role="region" aria-label="Area percobaan Flexbox, dapat digeser bila meluber" tabindex="0">
+          <div class="flex-demo">
+            <div class="item">Satu — isi pendek</div>
+            <div class="item">Dua — isinya sedikit lebih panjang</div>
+            <div class="item">Tiga</div>
+            <div class="item">Empat — amati lebar item di baris terakhir</div>
+            <div class="item">Lima</div>
+          </div>
+        </div>
+        <p>Setiap baris Flexbox membagikan ruangnya sendiri. Basis item: 12rem, grow: 1, shrink: 1.</p>
+      </section>
+      <section class="panel" aria-labelledby="grid-title">
+        <h2 id="grid-title">Grid</h2>
+        <div class="grid-demo">
+          <div class="item">Satu — isi pendek</div>
+          <div class="item">Dua — isinya sedikit lebih panjang</div>
+          <div class="item">Tiga</div>
+          <div class="item">Empat — kolom mengikuti track bersama</div>
+          <div class="item">Lima</div>
+        </div>
+        <p>Item mengikuti track yang sama. Kolom pada baris berbeda tetap selaras.</p>
+      </section>
+    </div>
+    <h2>Tugasmu</h2>
+    <ol>
+      <li>Tambahkan item keenam pada kedua contoh. Kapan perbedaannya lebih sulit terlihat?</li>
+      <li>Ganti basis Flexbox dari 12rem menjadi 18rem. Prediksi perubahan jumlah item per baris.</li>
+      <li>Ganti Grid menjadi tiga kolom eksplisit, lalu uji di layar sempit. Perbaiki dengan media query.</li>
+    </ol>
+  </main>
+</body>
+</html>

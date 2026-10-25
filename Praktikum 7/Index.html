@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="nama">Nama:</label>
+    <input type="text" id="nama">
+
+    <button type="button" id="simpan">Simpan nama</button>
+
+    <script>
+        const inputNama = document.getElementById("nama");
+        const tombolSimpan = document.getElementById("simpan");
+
+        // Baca data saat halaman dibuka.
+        const namaTersimpan = localStorage.getItem("latihan-nama");
+
+        // Masukkan kembali data yang ditemukan ke kolom input.
+        if (namaTersimpan !== null) {
+            inputNama.value = namaTersimpan;
+        }
+
+        // Simpan isi input ketika tombol diklik.
+        tombolSimpan.addEventListener("click", function () {
+            localStorage.setItem("latihan-nama", inputNama.value);
+        });
+    </script>
+</body>
+</html>

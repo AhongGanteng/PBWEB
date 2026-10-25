@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab 01 — Cascade dan inheritance</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 1rem; font-family: system-ui, sans-serif; line-height: 1.65; background: #f2f6f5; color: #172b27; }
+    main { max-width: 64rem; margin-inline: auto; }
+    h1, h2 { line-height: 1.2; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1rem; }
+    .panel { padding: 1.5rem; border: 1px solid #c6d5cf; border-radius: 1rem; background: white; min-width: 0; }
+    .hasil { padding: 1rem; border: 2px solid currentColor; font-size: 1.2rem; font-weight: 700; }
+    code { font-family: ui-monospace, monospace; }
+    a { color: #176b52; }
+    pre { overflow-x: auto; padding: 1rem; background: #f2f6f5; }
+    :focus-visible { outline: 3px solid #123fbc; outline-offset: 4px; }
+
+    /* EKSPERIMEN A: class lebih spesifik daripada type selector. */
+    .eksperimen-a p { color: #123fbc; }
+    .eksperimen-a .pesan { color: #176b52; }
+    .eksperimen-a p { color: #a12828; }
+
+    /* EKSPERIMEN B: specificity sama, aturan terakhir menang. */
+    .eksperimen-b .pesan { color: #123fbc; }
+    .eksperimen-b .pesan { color: #a12828; }
+
+    /* EKSPERIMEN C: deklarasi langsung mendahului inheritance. */
+    #induk { color: #a12828; }
+    .eksperimen-c .pesan { color: #123fbc; }
+  </style>
+</head>
+<body>
+  <main>
+    <a href="../proyek/index.html">Lihat proyek lengkap</a>
+    <h1>Prediksi warna sebelum mengubah kode.</h1>
+    <p>Buka file ini di editor, cari komentar EKSPERIMEN, lalu ubah satu deklarasi. Simpan dan muat ulang browser.</p>
+    <div class="grid">
+      <section class="panel eksperimen-a" aria-labelledby="judul-a">
+        <h2 id="judul-a">A. Specificity</h2>
+        <p class="pesan hasil">Aku berwarna hijau.</p>
+        <details><summary>Mengapa?</summary><p>Selector <code>.eksperimen-a .pesan</code> memiliki specificity 0,2,0, lebih besar daripada <code>.eksperimen-a p</code> dengan 0,1,1.</p><p>Coba hapus aturan hijau. Dari dua selector yang tersisa, merah menang karena muncul lebih akhir.</p></details>
+      </section>
+      <section class="panel eksperimen-b" aria-labelledby="judul-b">
+        <h2 id="judul-b">B. Source order</h2>
+        <p class="pesan hasil">Aku berwarna merah.</p>
+        <details><summary>Mengapa?</summary><p>Kedua selector sama. Pada tingkat cascade yang setara, deklarasi terakhir menang. Tukar urutan kedua aturan untuk melihat perubahan.</p></details>
+      </section>
+      <section class="panel eksperimen-c" id="induk" aria-labelledby="judul-c">
+        <h2 id="judul-c">C. Inheritance</h2>
+        <p class="pesan hasil">Aku berwarna biru.</p>
+        <details><summary>Mengapa?</summary><p>ID mengatur warna induk. Paragraf memiliki deklarasi langsung yang cocok dengannya, sehingga tidak memakai warna yang diwariskan induk. Hapus deklarasi biru untuk melihat warna merah diwarisi.</p></details>
+      </section>
+    </div>
+    <h2>Tugasmu</h2>
+    <ol>
+      <li>Ubah eksperimen A agar biru menang tanpa <code>!important</code>.</li>
+      <li>Jelaskan mengapa memindahkan aturan merah A ke bawah tidak cukup untuk mengalahkan hijau.</li>
+      <li>Pada C, ubah warna paragraf menjadi <code>inherit</code>. Jelaskan hasilnya.</li>
+    </ol>
+  </main>
+</body>
+</html>

@@ -1,0 +1,510 @@
+/* 1. Token desain: ubah nilai di sini untuk mencoba tema baru. */
+:root {
+  color-scheme: light;
+  --color-bg: #ffffff;
+  --color-surface: #f2f6f5;
+  --color-text: #172b27;
+  --color-muted: #4a625b;
+  --color-primary: #176b52;
+  --color-primary-hover: #11513e;
+  --color-border: #c6d5cf;
+  --color-focus: #123fbc;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --radius: 1rem;
+  --shadow: 0 1rem 3rem rgb(23 43 39 / 0.09);
+  --content-width: 70rem;
+}
+
+/* 2. Dasar halaman. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-block-start: 1.5rem;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.18;
+}
+
+h1 {
+  max-inline-size: 18ch;
+  font-size: 2.25rem;
+  letter-spacing: -0.035em;
+}
+
+h2 {
+  font-size: 1.75rem;
+  letter-spacing: -0.025em;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+p {
+  color: var(--color-muted);
+}
+
+a {
+  color: var(--color-primary);
+  text-underline-offset: 0.2em;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+code {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.93em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  inset-block-start: 0.75rem;
+  inset-inline-start: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  transform: translateY(-200%);
+  background: var(--color-text);
+  color: var(--color-bg);
+  border-radius: 0.5rem;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* 3. Pola tata letak yang dipakai ulang. */
+.container {
+  inline-size: min(100% - 2rem, var(--content-width));
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: clamp(3rem, 2rem + 3vw, 6rem);
+}
+
+.section--muted {
+  background: var(--color-surface);
+}
+
+.stack > * + * {
+  margin-block-start: var(--space-5);
+}
+
+.eyebrow {
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.09em;
+}
+
+.section-heading {
+  max-inline-size: 42rem;
+  margin-block-end: var(--space-6);
+}
+
+/* 4. Header dan navigasi: membungkus jika ruang habis. */
+.site-header {
+  border-block-end: 1px solid var(--color-border);
+}
+
+.header-layout,
+.footer-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  padding-block: var(--space-4);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-block-size: 2.75rem;
+  color: var(--color-text);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
+  flex-shrink: 0;
+  border-radius: 0.7rem;
+  background: var(--color-primary);
+  color: white;
+  font-family: ui-monospace, Consolas, monospace;
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-list a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 2.75rem;
+  font-weight: 600;
+}
+
+/* 5. Hero: satu kolom sebagai dasar; dua kolom saat konten muat. */
+.hero-layout {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.hero-copy,
+.learning-board {
+  min-inline-size: 0;
+}
+
+.lead {
+  max-inline-size: 54ch;
+  font-size: 1.125rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 2.75rem;
+  padding: 0.8rem 1.2rem;
+  border: 2px solid var(--color-primary);
+  border-radius: 0.65rem;
+  background: var(--color-primary);
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.button--secondary {
+  background: transparent;
+  color: var(--color-primary);
+}
+
+.hero-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  padding-inline-start: 1.25rem;
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
+.learning-board {
+  padding: clamp(1.25rem, 1rem + 1vw, 2rem);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  box-shadow: var(--shadow);
+}
+
+.board-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-block-end: var(--space-5);
+}
+
+.pill {
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--color-border);
+  border-radius: 100vmax;
+  background: var(--color-bg);
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  font-weight: 650;
+}
+
+.steps {
+  display: grid;
+  gap: var(--space-5);
+  margin-block: var(--space-6);
+  padding: 0;
+  list-style: none;
+}
+
+.steps li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.steps h3 {
+  margin-block-end: var(--space-1);
+  font-size: 1rem;
+}
+
+.steps p,
+.board-footnote {
+  font-size: 0.875rem;
+}
+
+.step-number {
+  display: grid;
+  place-items: center;
+  inline-size: 2.25rem;
+  block-size: 2.25rem;
+  flex-shrink: 0;
+  border-radius: 0.6rem;
+  background: var(--color-primary);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.board-footnote {
+  padding-block-start: var(--space-5);
+  border-block-start: 1px solid var(--color-border);
+}
+
+/* 6. Kartu: grid otomatis dan tombol sejajar di bagian bawah. */
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: var(--space-5);
+}
+
+.course-card {
+  display: flex;
+  flex-direction: column;
+  min-inline-size: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+}
+
+.course-art {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  border-radius: calc(var(--radius) - 1px) calc(var(--radius) - 1px) 0 0;
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.course-art--html {
+  background: #fce7d8;
+  color: #843b1c;
+}
+
+.course-art--css {
+  background: #dcece5;
+  color: #15523e;
+}
+
+.course-art--responsive {
+  background: #e5e7fb;
+  color: #3d4383;
+}
+
+.course-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  padding: var(--space-5);
+}
+
+.course-body .text-link {
+  margin-block-start: auto;
+  padding-block: 1.25rem 0.25rem;
+  font-weight: 700;
+}
+
+/* 7. Bagian latihan, FAQ, dan footer. */
+.practice-layout {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.practice-list {
+  display: grid;
+  gap: var(--space-5);
+  margin: 0;
+  padding-inline-start: 1.5rem;
+}
+
+.practice-list li {
+  padding-inline-start: var(--space-2);
+}
+
+.practice-list li::marker {
+  color: var(--color-primary);
+  font-weight: 800;
+}
+
+.practice-list h3 {
+  margin-block-end: var(--space-2);
+}
+
+.faq-container {
+  max-inline-size: 50rem;
+}
+
+.faq-list {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.faq-list details {
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  background: var(--color-bg);
+}
+
+.faq-list summary {
+  padding: var(--space-4) var(--space-5);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.faq-list details p {
+  padding: 0 var(--space-5) var(--space-5);
+}
+
+.site-footer {
+  border-block-start: 1px solid var(--color-border);
+  font-size: 0.875rem;
+}
+
+.site-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 2.75rem;
+}
+
+/* 8. Responsif: angka ini dipilih untuk komposisi konten contoh. */
+@media (min-width: 40rem) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 60rem) {
+  .hero-layout {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  }
+
+  .practice-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 4rem;
+  }
+}
+
+/* 9. Interaksi dengan mouse dan preferensi gerak pengguna. */
+@media (hover: hover) and (pointer: fine) {
+  .button:hover {
+    background: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+    transform: translateY(-2px);
+  }
+
+  .button--secondary:hover {
+    background: var(--color-surface);
+    color: var(--color-primary-hover);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+
+  .button:hover {
+    transform: none;
+  }
+}
+
+/* 10. Cetak: sederhanakan area yang tidak diperlukan di kertas. */
+@media print {
+  .site-header,
+  .site-footer,
+  .actions,
+  .skip-link {
+    display: none;
+  }
+
+  .section {
+    padding-block: 1.25rem;
+    background: white;
+  }
+
+  .learning-board {
+    box-shadow: none;
+  }
+
+  .course-grid,
+  .hero-layout,
+  .practice-layout {
+    display: block;
+  }
+
+  .course-card {
+    break-inside: avoid;
+    margin-block-end: 1rem;
+  }
+}

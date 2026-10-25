@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab 03 — Container query</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 1rem; font-family: system-ui, sans-serif; line-height: 1.65; background: #f2f6f5; color: #172b27; overflow-wrap: anywhere; }
+    main { max-width: 70rem; margin-inline: auto; }
+    h1, h2, h3 { line-height: 1.2; }
+    a { color: #176b52; }
+    :focus-visible { outline: 3px solid #123fbc; outline-offset: 4px; }
+    .wadah { width: 100%; margin-block: 2rem; padding: 1rem; border: 2px dashed #4a625b; min-width: 0; max-width: 100%; }
+    .wadah--sempit { width: 22rem; }
+    .wadah--ubah { width: 52rem; resize: horizontal; overflow: auto; min-width: min(100%, 16rem); }
+    .kartu { display: grid; gap: 1rem; padding: 1rem; background: white; border: 1px solid #c6d5cf; border-radius: 0.75rem; }
+    .visual { display: grid; place-items: center; min-height: 8rem; border-radius: 0.5rem; background: #dcece5; color: #15523e; font-size: 2rem; font-weight: 800; font-family: ui-monospace, monospace; }
+    .kartu h3 { margin-block: 0 0.5rem; }
+    .kartu p { margin: 0; }
+    .dukungan { padding: 1rem; background: #fce7d8; color: #843b1c; }
+    .didukung { display: none; }
+
+    @supports (container-type: inline-size) {
+      .wadah { container: demo / inline-size; }
+      .didukung { display: block; }
+      .tidak-didukung { display: none; }
+
+      @container demo (min-width: 32rem) {
+        .kartu { grid-template-columns: 10rem minmax(0, 1fr); align-items: center; }
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <a href="../proyek/index.html">Lihat proyek lengkap</a>
+    <h1>Satu viewport, dua lebar wadah.</h1>
+    <p>Kedua kartu menggunakan class yang sama. Perbedaannya datang dari lebar container masing-masing. Gunakan jendela cukup lebar agar perbedaannya terlihat.</p>
+    <p class="dukungan didukung">Browser mengenali container-type. Saat isi wadah minimal 32rem, kartu berubah menjadi dua kolom.</p>
+    <p class="dukungan tidak-didukung">Jika browser tidak mengenali container-type, kedua kartu tetap satu kolom dan semua isi tetap tersedia.</p>
+    <section aria-labelledby="sempit-title">
+      <h2 id="sempit-title">Wadah sempit</h2>
+      <div class="wadah wadah--sempit">
+        <article class="kartu">
+          <div class="visual" aria-hidden="true">CSS</div>
+          <div><h3>Belajar melalui percobaan</h3><p>Kartu ini mengikuti ruang wadahnya. Viewport lebar belum tentu membuat kartu berdampingan.</p></div>
+        </article>
+      </div>
+    </section>
+    <section aria-labelledby="lebar-title">
+      <h2 id="lebar-title">Wadah yang dapat diubah</h2>
+      <p>Pada browser dengan kontrol resize yang sesuai, tarik sudut kanan bawah kotak bergaris putus-putus. Kamu juga bisa mengubah width .wadah--ubah di editor.</p>
+      <div class="wadah wadah--ubah">
+        <article class="kartu">
+          <div class="visual" aria-hidden="true">CSS</div>
+          <div><h3>Belajar melalui percobaan</h3><p>Kartu ini mengikuti ruang wadahnya. Lebar container yang mencukupi mengaktifkan dua kolom.</p></div>
+        </article>
+      </div>
+    </section>
+    <h2>Tugasmu</h2>
+    <ol>
+      <li>Ubah breakpoint menjadi 26rem. Apa yang berubah pada wadah sempit dan lebar?</li>
+      <li>Hapus container declaration untuk sementara. Mengapa query tidak menemukan container bernama demo?</li>
+      <li>Jelaskan perbedaan hasil jika kondisi tersebut menggunakan media query.</li>
+    </ol>
+  </main>
+</body>
+</html>

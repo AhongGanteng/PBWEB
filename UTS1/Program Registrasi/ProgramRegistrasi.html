@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrasi</title>
+    <style>
+    .sukses { color: green; }
+    .gagal { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Registrasi Peserta Seminar IT Days</h1>
+    <form id="form-registrasi">
+        <label for="nama">Nama Lengkap</label>
+        <input type="text" id="nama">
+        <label for="email">Email</label>
+        <input type="text" id="email">
+        <label for="password">Password</label>
+        <input type="password" id="password">
+        <label for="konfirmasi">Konfirmasi Password</label>
+        <input type="password" id="konfirmasi">
+        <button type="submit">Daftar</button>
+    </form>
+    <ul id="daftar-error" class="gagal"></ul>
+    <p id="pesan" class="sukses"></p>
+    <script>
+        const form = document.getElementById("form-registrasi");
+        const daftarError = document.querySelector("#daftar-error")
+        const pesan = document.querySelector("#pesan")
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const username = document.getElementById('nama').value.trim();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const konfpass = document.getElementById('konfirmasi').value;
+            // hapus daftar error saat validasi kedua
+            daftarError.innerHTML = "";
+            pesan.textContent = ""; 
+
+            if(username === "") {
+                const li = document.createElement("li");
+                li.textContent = "Nama wajib diisi ";
+                daftarError.appendChild(li);
+            }
+            if (email === "") {
+                const li = document.createElement("li");
+                li.textContent = "Email harus mengandung ";
+                daftarError.appendChild(li);
+            }
+            if (password.length < 6) {
+                const li = document.createElement("li");
+                li.textContent = "Password minimal 6 karakter ";
+                daftarError.appendChild(li);
+            } else if (password != konfpass) {
+                const li = document.createElement("li");
+                li.textContent = "Konfirmasi password tidak sama";
+                daftarError.appendChild(li);
+            } else {
+                pesan.append("Registrasi berhasil. Selamat bergabung," + username)
+            }
+    });
+    </script>
+</body>
+</html>
