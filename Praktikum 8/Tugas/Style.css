@@ -1,0 +1,535 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    width: 100%;
+    height: auto;
+}
+
+main {
+    padding: 80px 0px;
+    margin: 10px;
+}
+
+h2 {
+    color: #292C27;
+    font-family: Arial, Georgia, serif;
+    font-size: 35px;
+}
+
+h1, a {
+    color: #FFFDF7;
+    font-family: Georgia, serif;
+}
+
+p, .MedSos, .kenalan {
+    color: #666b61;
+    font-family: Arial, sans-serif;
+}
+
+p {
+    margin: 10px 0;
+}
+
+:root {
+    --warna-latar: #F6F3EB;
+    --warna-teks: #666B61;
+    --warna-kartu: #D8D9CD;
+    --warna-nav: #455B43;
+    --warna-btnPutih: #FFFDF7;
+    --warna-teksGelap: #292C27;
+    --warna-hoverTerang: #e7e5e0;
+    --warna-hoverGelap: #37483a;
+    --warna-tableTerang: #cdf7c9;
+    --warna-tdTerang: #fffef9;
+    --warna-teksTdGelap: #080d1a;
+}
+
+body {
+    background-color: var(--warna-latar);
+    color: var(--warna-teks);
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 16px 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--warna-nav);
+}
+
+ul {
+    list-style: none;
+}
+
+nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+a {
+    text-decoration: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.garis {
+    background-color: var(--warna-kartu);
+    margin: 70px 0;
+}
+
+button {
+    background-color: var(--warna-btnPutih);
+    border-radius: 5px;
+    margin: 10px;
+    padding: 8px;
+    min-width: 100px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--warna-hoverTerang);
+}
+
+#Home img {
+    width: 400px;
+    height: 400px;
+}
+
+.FotoDiriKu {
+    padding: 20px;
+    background-color: var(--warna-btnPutih);
+    align-items: center;
+}
+
+#Home {
+    display: flex;
+    justify-content: space-between;
+    padding: 60px 50px;
+    gap: 70px;
+}
+
+.text {
+    width: 50%;
+}
+
+.text h2 {
+    font-size: 70px;
+    margin: 15px 0;
+}
+
+.kenalan {
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.kenalan, #btn-sosial {
+    background-color: var(--warna-nav);
+    color: var(--warna-btnPutih);
+    padding: 12px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.kenalan:hover, #btn-sosial:hover {
+    background-color: var(--warna-hoverGelap);
+
+}
+
+#btn-sosial, #btn-tema, #btn-edit {
+    border: none;
+}
+
+.listMedSos {
+    display: none;
+    overflow: hidden;
+}
+
+.Ahong {
+    color: var(--warna-nav);
+}
+
+#AboutMe {
+    padding: 0 50px;
+}
+
+.aboutContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 70px;
+}
+
+aside {
+    background-color: var(--warna-kartu);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+aside p{
+    color: var(--warna-teksGelap);
+}
+
+.logo {
+    font-size: 24px;
+}
+
+.aksiNav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#btn-menu {
+    display: none;
+    border: none;
+}
+
+main > section {
+    scroll-margin-top: 90px;
+}
+
+.biodata {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.biodata > div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    min-width: 0;
+}
+
+.biodata .emoji {
+    font-size: 40px;
+    flex-shrink: 0;
+}
+
+.teksBiodata {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.Nama, .Major, .Univ, .Semester {
+    background-color: var(--warna-kartu);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.teksBiodata p,
+.teksBiodata h3 {
+    margin: 0;
+}
+
+#MySkill {
+    padding: 0 50px;
+}
+
+.kumpulanArticle {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+}
+
+.kumpulanArticle article {
+    background-color: var(--warna-btnPutih);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+#MySkill header {
+    margin-bottom: 40px;
+}
+
+.kumpulanArticle article h3 {
+    color: var(--warna-teksGelap);
+}
+
+#Hobbies {
+    padding: 0 50px;
+}
+
+#Jadwalku {
+    padding: 2%;
+    background-color: var(--warna-tableTerang);
+    position: relative;
+    height: auto;
+    border-radius: 10px;
+    min-width: 0;
+}
+
+.tableJadwal {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 8px;
+}
+
+table thead th:first-child, table tbody th {
+    background-color: var(--warna-nav);
+    color: var(--warna-btnPutih);
+}
+
+table tbody td {
+    background-color: var(--warna-tdTerang);
+    height: 55px;
+    text-align: left;
+    padding: 5px;
+    color: var(--warna-teksTdGelap);
+    overflow-wrap: break-word;
+}
+
+table tbody td, table tbody th {
+    border-radius: 5px;
+    text-align: center;
+}
+
+table thead th {
+    background-color: var(--warna-hoverGelap);
+    color: var(--warna-btnPutih);
+    height: 35px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+table tbody th {
+    padding: 5px;
+    text-align: center;
+}
+
+.probLanjut {
+    background-color: #d5c75c;
+}
+
+.Siscer {
+    background-color: #1ddadd;
+}
+
+.TeologiMoral {
+    background-color: #656365;
+}
+
+.PBWeb {
+    background-color: #08de48;
+}
+
+.metodeNumerik {
+    background-color: #5f5187;
+}
+
+.meachineLearning {
+    background-color: #bb1515;
+}
+
+.intApp {
+    background-color: #253c74;
+}
+
+.ManajemenData {
+    background-color: #0b49cd;
+}
+
+.AljabarLinier {
+    background-color: #7c1853;
+}
+
+.ifBelajar {
+    background-color: #d908ba;
+}
+
+.bangunTidur {
+    background-color: #06eeff;
+}
+
+#Jadwal header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.BelajarMandiri {
+    background-color: #8399ca;
+}
+
+.Tidur {
+    background-color: #ce9e25;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px  30px 30px; 
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--warna-latar);
+}
+
+/* Tablet dan layar yang mulai sempit */
+@media (max-width: 1024px) {
+    body {
+        padding: 0 24px;
+    }
+
+    /* Header tetap terlihat dan ikut dihitung dalam layout */
+    body > header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        padding: 0;
+    }
+
+    nav {
+        position: static;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 12px 16px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        gap: 10px 16px;
+    }
+
+    main {
+        padding: 32px 0;
+        margin: 0;
+    }
+
+    #Home {
+        flex-direction: column;
+        padding: 40px 0;
+        gap: 30px;
+    }
+
+    .text {
+        width: 100%;
+    }
+
+    .FotoDiriKu {
+        width: 100%;
+        max-width: 440px;
+    }
+
+    #Home img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    #AboutMe,
+    #MySkill,
+    #Hobbies {
+        padding: 0;
+    }
+
+    .aboutContent {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 24px;
+    }
+
+    .kumpulanArticle {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+    }
+}
+
+/* HP */
+@media (max-width: 600px) {
+    body {
+        padding: 0 16px;
+    }
+
+    .text h2 {
+        font-size: 42px;
+    }
+
+    .kumpulanArticle {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 0 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    body > header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        padding: 0;
+    }
+
+    nav {
+        position: static;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 12px;
+    }
+
+    .aksiNav {
+        margin-left: auto;
+    }
+
+    .aksiNav button {
+        min-width: 0;
+        min-height: 40px;
+        margin: 0;
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    #btn-menu {
+        display: block;
+    }
+
+    #menu-nav {
+        display: none;
+        width: 100%;
+        order: 3;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    #menu-nav.terbuka {
+        display: flex;
+    }
+
+    #menu-nav a {
+        display: block;
+        padding: 8px 0;
+    }
+
+    .biodata {
+        grid-template-columns: 1fr;
+    }
+}
