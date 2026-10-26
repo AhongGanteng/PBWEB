@@ -17,20 +17,20 @@ tombolTema.addEventListener("click", function () {
 });
 
 /* =========================================================
-   UNTUK TOMBOL SEMBUNYI JADWAL
+   UNTUK TOMBOL SEMBUNYI ASIDE
    ========================================================= */
 const tombolSembunyi = document.querySelector("#btn-jadwal");
-const jadwalKeseharian = document.querySelector("#Jadwalku");
-if (jadwalKeseharian && tombolSembunyi) {
+const infaTambahan = document.querySelector("#info-tambahan");
+if (infaTambahan && tombolSembunyi) {
     const statusTabel = localStorage.getItem("statusTabel");
     if (statusTabel === "sembunyi") {
-        jadwalKeseharian.classList.add("tersembunyi");
+        infaTambahan.classList.add("tersembunyi");
     } else if (statusTabel === "tampil") {
-        jadwalKeseharian.classList.remove("tersembunyi");
+        infaTambahan.classList.remove("tersembunyi");
     }
     tombolSembunyi.addEventListener("click", () => {
-        jadwalKeseharian.classList.toggle("tersembunyi");
-        const status = jadwalKeseharian.classList.contains("tersembunyi") ? "sembunyi" : "tampil";
+        infaTambahan.classList.toggle("tersembunyi");
+        const status = infaTambahan.classList.contains("tersembunyi") ? "sembunyi" : "tampil";
         localStorage.setItem("statusTabel", status); 
     });
 }
