@@ -463,28 +463,6 @@ footer {
     }
 }
 
-/* HP */
-@media (max-width: 600px) {
-    body {
-        padding: 0 16px;
-    }
-
-    .text h2 {
-        font-size: 42px;
-    }
-
-    .kumpulanArticle {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    footer {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 0 0 24px;
-    }
-}
-
 @media (max-width: 768px) {
     body > header {
         position: sticky;
@@ -535,5 +513,27 @@ footer {
 
     .biodata {
         grid-template-columns: 1fr;
+    }
+}
+
+/* HP */
+@media (max-width: 600px) {
+    body {
+        padding: 0 16px;
+    }
+
+    .text h2 {
+        font-size: 42px;
+    }
+
+    .kumpulanArticle {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 0 24px;
     }
 }
