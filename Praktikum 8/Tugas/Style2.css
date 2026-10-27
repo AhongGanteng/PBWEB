@@ -77,7 +77,7 @@ body.dark-mode h2, body.dark-mode h3, body.dark-mode #MySkill .kumpulanArticle a
 body.dark-mode p, body.dark-mode .MedSos { 
     color: #C0C7BA; 
 }
-body .dark-mode .Ahong { 
+body.dark-mode .Ahong { 
     color: #B7CBA6; 
 }
 body.dark-mode .FotoDiriKu, body.dark-mode .kumpulanArticle article, body.dark-mode .biodata > div, body.dark-mode aside,
@@ -142,10 +142,10 @@ body.dark-mode .menu-sosial .MedSos {
     color: #F6F3EB;
 }
 
-form-fitur input:invalid, form-fitur textarea:invalid {
+.form-fitur input:invalid, .form-fitur textarea:invalid {
     border: 2px solid #d9534f;
 }
 
-form-fitur input:valid, form-fitur textarea:valid {
+.form-fitur input:valid, .form-fitur textarea:valid {
     border: 2px solid #5cb85c;
 }

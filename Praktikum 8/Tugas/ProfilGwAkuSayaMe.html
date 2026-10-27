@@ -10,7 +10,9 @@
     <script src="ScriptGw.js" defer></script>
 </head>
 <body>
+    <!-- BAGIAN AWAL HEADER -->
     <header>
+        <!-- BAGIAN AWAL NAVIGASI -->
         <nav>
             <a href="#Home" class="logo">Ahong</a>
             <ul id="menu-nav">
@@ -24,15 +26,19 @@
             </ul>
             <div class="aksiNav">
                 <button type="button" id="btn-tema">Gelap</button>
+                <button type="button" id="btn-jadwal">Tampilkan Info</button>
                 <button type="button" id="btn-menu"
                         aria-controls="menu-nav"
                         aria-expanded="false"
                         aria-label="Buka atau tutup navigasi">☰</button>
             </div>
-        </nav>  
+        </nav>
+        <!-- BAGIAN AKHIR NAVIGASI -->  
     </header>
+    <!-- BAGIAN AKHIR HEADER -->
+    <!-- BAGIAN AWAL MAIN -->
     <main>
-        <hr>
+        <!-- BAGIAN AWAL MENU HOME -->
         <section id="Home">
             <div class="text">
                 <p>Daun yang jatuh, tidak akan membenci angin</p>
@@ -40,7 +46,8 @@
                 <p>
                     Aku adalah seorang Mahasiswa Informatika yang menyukai programing, gaming, 
                             selalu belajar sesuatu yang baru dan menjadi lebih baik kemudian.
-                    Aku lagi belajar untuk membangun web</p>
+                    Aku lagi belajar untuk membangun web
+                </p>
                 <div>
                     <a href="#AboutMe" class="kenalan">Kenalan dulu</a>
                     <div class="menu-sosial">
@@ -49,7 +56,6 @@
                                 aria-expanded="false">
                             Sosial Media
                         </button>
-
                         <ul id="daftar-sosial" class="listMedSos">
                             <li>
                                 <a class="MedSos"
@@ -81,7 +87,9 @@
                 <p><i>Pelan-pelan Kak Ahong</i></p>
             </div>
         </section>
+        <!-- BAGIAN AKHIR MENU HOME -->
         <hr class="garis">
+        <!-- BAGIAN AWAL MENU ABOUTME -->
         <section id="AboutMe">
             <header>
                 <h2>About Me</h2>
@@ -97,7 +105,7 @@
                         dan mengembangkan berbagai ide.
                     </p>
                 </div>
-                <aside>
+                <aside id="info-tambahan">
                     <h3>For Your Information</h3>
                     <p>Belakangan ini aku lagi suka belajar tentang web dan OOP Java</p>
                 </aside>
@@ -133,7 +141,9 @@
                 </div>
             </div>
         </section>
+        <!-- BAGIAN AKHIR MENU ABOUTHOME -->
         <hr class="garis">
+        <!-- BAGIAN AWAL MENU MYSKILL -->
         <section id="MySkill">
             <header>
                 <h2>My Skill</h2>
@@ -148,32 +158,29 @@
                     <article>
                         <h3>CSS</h3>
                         <p>Dasar dan Responsif</p>
-                        <p></p>
                     </article>
                     <article>
                         <h3>JavaScript</h3>
                         <p>DOM dan EventHandling</p>
-                        <p></p>
                     </article>
                     <article>
                         <h3>Java</h3>
                         <p>Dasar dan OOP</p>
-                        <p></p>
                     </article>
                     <article>
                         <h3>Python</h3>
                         <p>Dasar dan sedikit OOP</p>
-                        <p></p>
                     </article>
                     <article>
                         <h3>SQL</h3>
-                        <p>Latihan pengambilan data</p>
-                        <p></p>
+                        <p>Manipulas database</p>
                     </article>
                 </div>
             </div>
         </section>
+        <!-- BAGIAN AKHIR MENU MYSKILL -->
         <hr class="garis">
+        <!-- BAGIAN AWAL MENU PORTOFOLIO -->
         <section id="Portofolio">
             <header>
                 <h2>Portofolio / Pengalaman</h2>
@@ -193,7 +200,9 @@
 
             <div id="daftar-portofolio" class="kumpulanArticle"></div>
         </section>
+        <!-- BAGIAN AKHIR MENU PORTOFOLIO -->
         <hr class="garis">
+        <!-- BAGIAN AWAL MENU HOBBIES -->
         <section id="Hobbies">
             <header>
                 <h2>Hobi</h2>
@@ -225,7 +234,9 @@
                 </tbody>
             </table>
         </section>
+        <!-- BAGIAN AKHIR MENU HOBBIES -->
         <hr class="garis">
+        <!-- BAGIAN AWAL MENU JADWAL -->
         <section id="Jadwalku">
             <header>
                 <h2>Jadwal keseharian</h2>
@@ -489,37 +500,39 @@
                 </table>
             </div>
         </section>
+        <!-- BAGIAN AKHIR MENU JADWAL -->
         <hr class="garis">
+        <!-- BAGIAN AWAL MENU KOMENTAR -->
         <section id="Komentar">
             <header>
                 <h2>Tinggalkan Komentar</h2>
             </header>
-
+            <div id="loading" role="status">
+                <span class="spinner" aria-hidden="true"></span>
+                <span>Sedang memuat, mohon tunggu...</span>
+            </div>
             <form id="form-komentar" class="form-fitur" novalidate>
                 <label for="input-nama">Nama</label>
                 <input id="input-nama" pattern=".{3,20}" type="text" required placeholder="Nama minimal 3 - 20 karakter">
-
                 <label for="input-pesan">Komentar</label>
-                <textarea id="input-pesan" rows="3" minlength="1" required placeholder="Komentar minimal 1 karakter"></textarea>
-
-                <p id="error-komentar" class="pesan-error"
-                aria-live="polite"></p>
-
+                <textarea id="input-pesan" rows="3" minlength="5" required placeholder="Komentar minimal 5 karakter"></textarea>
+                <p id="error-komentar" class="pesan-error" aria-live="polite"></p>
                 <button type="submit">Kirim komentar</button>
             </form>
-
             <button id="hapus-semua-komentar" type="button">
                 Hapus semua komentar
             </button>
-
             <ul id="daftar-komentar"></ul>
         </section>
+        <!-- BAGIAN AKHIR MENU KOMENTAR -->
     </main>
     <hr class="garis">
+    <!-- BAGIAN FOOTER -->
     <footer>
         <h3>Terima kasih sudah berkunjung</h3>
         <p>© 2026 Ahong · masih terus belajar</p>
     </footer>
+    <!-- TOMBOL BUAT KEMBALI KE ATAS -->
     <button id="kembali-atas" type="button">
         Kembali ke atas ↑
     </button>

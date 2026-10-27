@@ -140,7 +140,7 @@ button:hover {
     border-radius: 5px;
 }
 
-.kenalan, #btn-sosial {
+.kenalan, #btn-sosial, #btn-jadwal {
     background-color: var(--warna-nav);
     color: var(--warna-btnPutih);
     padding: 12px;
@@ -148,12 +148,12 @@ button:hover {
     cursor: pointer;
 }
 
-.kenalan:hover, #btn-sosial:hover {
+.kenalan:hover, #btn-sosial:hover, #btn-jadwal:hover {
     background-color: var(--warna-hoverGelap);
 
 }
 
-#btn-sosial, #btn-tema, #btn-edit {
+#btn-sosial, #btn-tema, #btn-edit, #btn-jadwal {
     border: none;
 }
 
@@ -390,6 +390,40 @@ footer {
     background-color: var(--warna-latar);
 }
 
+.tersembunyi { 
+    display: none; 
+}
+
+#loading {
+  display: none; /* JavaScript akan mengubahnya menjadi flex */
+  align-items: center;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+#loading .spinner {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+
+  /* Bentuk lingkaran dengan satu sisi berwarna biru */
+  border: 4px solid #d1d5db;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+
+  animation: berputar 0.8s linear infinite;
+}
+
+@keyframes berputar {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
 /* Tablet dan layar yang mulai sempit */
 @media (max-width: 1024px) {
     body {
@@ -459,28 +493,6 @@ footer {
     }
 }
 
-/* HP */
-@media (max-width: 600px) {
-    body {
-        padding: 0 16px;
-    }
-
-    .text h2 {
-        font-size: 42px;
-    }
-
-    .kumpulanArticle {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    footer {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 0 0 24px;
-    }
-}
-
 @media (max-width: 768px) {
     body > header {
         position: sticky;
@@ -531,5 +543,27 @@ footer {
 
     .biodata {
         grid-template-columns: 1fr;
+    }
+}
+
+/* HP */
+@media (max-width: 600px) {
+    body {
+        padding: 0 16px;
+    }
+
+    .text h2 {
+        font-size: 42px;
+    }
+
+    .kumpulanArticle {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 0 24px;
     }
 }
