@@ -6,15 +6,18 @@ function muatPreferensiTema() {
   const tema = localStorage.getItem("tema");
   if (tema === "dark") {
     document.body.classList.add("dark-mode");
+    tombolTema.textContent = "Terang";
   }
 }
 muatPreferensiTema();
-tombolTema.addEventListener("click", function () {
-    const gelap = document.body.classList.toggle("dark-mode");
-    if (gelap) tombolTema.textContent = "Terang";
-    else tombolTema.textContent = "Gelap";
-    localStorage.setItem("tema", gelap ? "dark" : "light");
-});
+if (tombolTema) {
+    tombolTema.addEventListener("click", function () {
+        const gelap = document.body.classList.toggle("dark-mode");
+        if (gelap) tombolTema.textContent = "Terang";
+        else tombolTema.textContent = "Gelap";
+        localStorage.setItem("tema", gelap ? "dark" : "light");
+    });
+}
 
 /* =========================================================
    UNTUK TOMBOL SEMBUNYI ASIDE
@@ -91,35 +94,38 @@ function muatDrafPortofolio() {
         inputIsiDraf.value = draf.isi;
     }
 }
-formPortofolio.addEventListener("submit", function (event) {
-    event.preventDefault();
-    const judul = inputJudulDraf.value.trim();
-    const isi = inputIsiDraf.value.trim();
+if (formPortofolio && containerPortofolio) {
+    formPortofolio.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const judul = inputJudulDraf.value.trim();
+        const isi = inputIsiDraf.value.trim();
 
-    if (judul === "" || isi === "") {
-        errorPortofolio.textContent =
-            "Judul dan deskripsi portofolio wajib diisi.";
-        return;
-    }
+        if (judul === "" || isi === "") {
+            errorPortofolio.textContent =
+                "Judul dan deskripsi portofolio wajib diisi.";
+            return;
+        }
 
-    errorPortofolio.textContent = "";
-    simpanPortofolio(judul, isi);
+        errorPortofolio.textContent = "";
+        simpanPortofolio(judul, isi);
+        muatPortofolio();
+        formPortofolio.reset();
+        sessionStorage.removeItem("drafPortofolio");
+    });
+    containerPortofolio.addEventListener("click", function (event) {
+        if (event.target.matches("button.hapus-portofolio")) {
+            const artikel = event.target.closest("article");
+            const indeks = parseInt(artikel.dataset.indeks, 10);
+
+            hapusPortofolio(indeks);
+        }
+    });
+    inputJudulDraf.addEventListener("input", simpanDrafPortofolio);
+    inputIsiDraf.addEventListener("input", simpanDrafPortofolio);
     muatPortofolio();
-    formPortofolio.reset();
-    sessionStorage.removeItem("drafPortofolio");
-});
-containerPortofolio.addEventListener("click", function (event) {
-    if (event.target.matches("button.hapus-portofolio")) {
-        const artikel = event.target.closest("article");
-        const indeks = parseInt(artikel.dataset.indeks, 10);
+    muatDrafPortofolio();   
+}
 
-        hapusPortofolio(indeks);
-    }
-});
-inputJudulDraf.addEventListener("input", simpanDrafPortofolio);
-inputIsiDraf.addEventListener("input", simpanDrafPortofolio);
-muatPortofolio();
-muatDrafPortofolio();
 
 /* =========================================================
    UNTUK KOMENTAR
@@ -128,6 +134,9 @@ const formKomentar = document.querySelector("#form-komentar");
 const daftarKomentar = document.querySelector("#daftar-komentar");
 const errorKomentar = document.querySelector("#error-komentar");
 const hapusSemuaKomen = document.querySelector("#hapus-semua-komentar");
+const inputNamaDraf = document.querySelector("#input-nama");
+const inputPesanDraf = document.querySelector("#input-pesan");
+
 function simpanKomentar(nama, pesan) {
   const daftar = JSON.parse(localStorage.getItem("komentar")) || [];
   daftar.push({ nama, pesan });
@@ -152,43 +161,12 @@ function buatItemKomentar(nama, pesan, indeks) {
     item.appendChild(hapus);
     daftarKomentar.appendChild(item);
 }
-formKomentar.addEventListener("submit", function (event) {
-    event.preventDefault();
-    const nama = document.querySelector("#input-nama").value.trim();
-    const pesan = document.querySelector("#input-pesan").value.trim();
-    if (nama === "" || pesan === "") {
-        errorKomentar.textContent = "Nama dan komentar wajib diisi.";
-        return;
-    }
-    if (pesan.length < 5) {
-        errorKomentar.textContent = "Komentar minimal 5 karakter.";
-        return;
-    }
-    errorKomentar.textContent = "";
-    simpanKomentar(nama, pesan);
-    muatKomentar();
-    formKomentar.reset();
-    sessionStorage.removeItem("drafKomentar");
-});
-daftarKomentar.addEventListener("click", function (event) {
-    if (event.target.matches("button.hapus-komentar")) {
-        const indeks = parseInt(event.target.dataset.indeks, 10);
-        hapusKomentar(indeks);
-    }
-});
-hapusSemuaKomen.addEventListener("click", function () {
-    localStorage.removeItem("komentar");
-    muatKomentar();
-});
 function muatKomentar() {
-  daftarKomentar.innerHTML = "";
+  daftarKomentar.textContent = "";
   const daftar = JSON.parse(localStorage.getItem("komentar")) || [];
   daftar.forEach((k, indeks) => {buatItemKomentar(k.nama, k.pesan, indeks) 
   });
 }
-
-const inputNamaDraf = document.querySelector("#input-nama");
-const inputPesanDraf = document.querySelector("#input-pesan");
 function simpanDraf() {
   const draf = {
     nama: inputNamaDraf.value,
@@ -203,10 +181,40 @@ function muatDraf() {
     inputPesanDraf.value = draf.pesan;
   }
 }
-muatKomentar();
-muatDraf();
-inputNamaDraf.addEventListener("input", simpanDraf);
-inputPesanDraf.addEventListener("input", simpanDraf);
+if (formKomentar && daftarKomentar && hapusSemuaKomen) {
+    formKomentar.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const nama = document.querySelector("#input-nama").value.trim();
+        const pesan = document.querySelector("#input-pesan").value.trim();
+        if (nama === "" || pesan === "") {
+            errorKomentar.textContent = "Nama dan komentar wajib diisi.";
+            return;
+        }
+        if (pesan.length < 5) {
+            errorKomentar.textContent = "Komentar minimal 5 karakter.";
+            return;
+        }
+        errorKomentar.textContent = "";
+        simpanKomentar(nama, pesan);
+        muatKomentar();
+        formKomentar.reset();
+        sessionStorage.removeItem("drafKomentar");
+    });
+    daftarKomentar.addEventListener("click", function (event) {
+        if (event.target.matches("button.hapus-komentar")) {
+            const indeks = parseInt(event.target.dataset.indeks, 10);
+            hapusKomentar(indeks);
+        }
+    });
+    hapusSemuaKomen.addEventListener("click", function () {
+        localStorage.removeItem("komentar");
+        muatKomentar();
+    });
+    muatKomentar();
+    muatDraf();
+    inputNamaDraf.addEventListener("input", simpanDraf);
+    inputPesanDraf.addEventListener("input", simpanDraf);
+}
 
 /* =========================================================
    BUAT KEMBALI KE ATAS
@@ -217,31 +225,37 @@ function tampilkanTombolAtas() {
     else tombolAtas.style.display = "none";
 }
 window.addEventListener("scroll", tampilkanTombolAtas);
-tombolAtas.addEventListener("click", function () {
-    window.scrollTo(0, 0);
-});
-tampilkanTombolAtas();
+if (tombolAtas) {
+    tombolAtas.addEventListener("click", function () {
+        window.scrollTo(0, 0);
+    });
+    tampilkanTombolAtas();
+}
 
 /* =========================================================
    UNTUK NAVIGASI
    ========================================================= */
 const btnMenuHP = document.querySelector("#btn-menu");
 const menuNav = document.querySelector("#menu-nav");
-btnMenuHP.addEventListener("click", function () {
-    const terbuka = menuNav.classList.toggle("terbuka");
-    btnMenuHP.setAttribute("aria-expanded", terbuka);
-});
-menuNav.querySelectorAll("a").forEach(function (tautan) {
-    tautan.addEventListener("click", function () {
-        menuNav.classList.remove("terbuka");
-        btnMenuHP.setAttribute("aria-expanded", "false");
+if (btnMenuHP && menuNav) {
+    btnMenuHP.addEventListener("click", function () {
+        const terbuka = menuNav.classList.toggle("terbuka");
+        btnMenuHP.setAttribute("aria-expanded", terbuka);
     });
-});
+    menuNav.querySelectorAll("a").forEach(function (tautan) {
+        tautan.addEventListener("click", function () {
+            menuNav.classList.remove("terbuka");
+            btnMenuHP.setAttribute("aria-expanded", "false");
+        });
+    });
+}
 const tombolSosial = document.querySelector("#btn-sosial");
 const daftarSosial = document.querySelector(".listMedSos");
-tombolSosial.addEventListener("click", function () {
-    const terbuka = daftarSosial.classList.toggle("terbuka");
+if (tombolSosial) {
+    tombolSosial.addEventListener("click", function () {
+        const terbuka = daftarSosial.classList.toggle("terbuka");
 
-    tombolSosial.setAttribute("aria-expanded", terbuka);
-});
+        tombolSosial.setAttribute("aria-expanded", terbuka);
+    });
+}
 
