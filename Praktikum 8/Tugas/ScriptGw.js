@@ -40,7 +40,7 @@ async function muatLoading() {
 muatLoading();
 
 /* =========================================================
-   UNTUK TOMBOL PERGANTIAN
+   UNTUK TOMBOL PERGANTIAN TEMA
    ========================================================= */
 const tombolTema = document.querySelector("#btn-tema");
 function muatPreferensiTema() {
@@ -166,7 +166,6 @@ if (formPortofolio && containerPortofolio) {
     muatPortofolio();
     muatDrafPortofolio();   
 }
-
 
 /* =========================================================
    UNTUK KOMENTAR

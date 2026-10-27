@@ -395,7 +395,7 @@ footer {
 }
 
 #loading {
-  display: none; /* JavaScript akan mengubahnya menjadi flex */
+  display: none; 
   align-items: center;
   gap: 10px;
   margin: 16px 0;
@@ -407,7 +407,6 @@ footer {
   flex-shrink: 0;
   box-sizing: border-box;
 
-  /* Bentuk lingkaran dengan satu sisi berwarna biru */
   border: 4px solid #d1d5db;
   border-top-color: #2563eb;
   border-radius: 50%;
