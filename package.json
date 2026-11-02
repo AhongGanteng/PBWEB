@@ -1,0 +1,25 @@
+{
+  "name": "pbweb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite \"Praktikum 8/Tugas\" --open /ProfilGwAkuSayaMe.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AhongGanteng/PBWEB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/AhongGanteng/PBWEB/issues"
+  },
+  "homepage": "https://github.com/AhongGanteng/PBWEB#readme",
+  "devDependencies": {
+    "vite": "^8.3.5"
+  }
+}
