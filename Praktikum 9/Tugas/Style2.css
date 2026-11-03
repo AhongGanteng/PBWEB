@@ -1,0 +1,151 @@
+#Portofolio, #Komentar { 
+    padding: 0 50px; 
+}
+.form-fitur { 
+    display: grid; 
+    gap: 12px; 
+    margin: 20px 0; 
+}
+.form-fitur label { 
+    display: grid; 
+    gap: 6px; 
+    font-family: Arial, sans-serif; 
+}
+.form-fitur input, .form-fitur textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #D8D9CD;
+    border-radius: 5px;
+    background-color: #FFFDF7;
+    color: #292C27;
+    font: inherit;
+}
+.form-fitur textarea { 
+    resize: vertical; 
+}
+.form-fitur button { 
+    justify-self: start; 
+    margin: 0; 
+}
+.pesan-error { 
+    color: #A12A2A; 
+    min-height: 1.6em; 
+    margin: 0; 
+}
+
+#daftar-komentar { 
+    display: block; 
+    list-style: none; 
+}
+#daftar-komentar li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    margin: 12px 0;
+    background-color: #FFFDF7;
+    border-radius: 8px;
+}
+#daftar-komentar p { 
+    flex: 1; 
+    min-width: 0; 
+    margin: 0; 
+    overflow-wrap: anywhere; 
+}
+#daftar-komentar button { 
+    margin: 0; 
+}
+#daftar-portofolio article { 
+    overflow-wrap: anywhere; 
+}
+#kembali-atas { 
+    display: none; 
+    position: fixed; 
+    right: 16px; 
+    bottom: 16px; 
+    z-index: 1001; }
+
+body.dark-mode { 
+    background-color: #1E241F; 
+    color: #F6F3EB; 
+}
+body.dark-mode h2, body.dark-mode h3, body.dark-mode #MySkill .kumpulanArticle article h3, body.dark-mode aside p { 
+    color: #F6F3EB; 
+}
+body.dark-mode p, body.dark-mode .MedSos { 
+    color: #C0C7BA; 
+}
+body.dark-mode .Ahong { 
+    color: #B7CBA6; 
+}
+body.dark-mode .FotoDiriKu, body.dark-mode .kumpulanArticle article, body.dark-mode .biodata > div, body.dark-mode aside,
+body.dark-mode #Jadwalku, body.dark-mode #daftar-komentar li { 
+    background-color: #283129; 
+}
+body.dark-mode footer { 
+    background-color: #1E241F; 
+}
+body.dark-mode .tableHobi td { 
+    background-color: #283129; color: #F6F3EB; 
+}
+body.dark-mode .form-fitur input, body.dark-mode .form-fitur textarea {
+    background-color: #283129;
+    color: #F6F3EB;
+    border-color: #526049;
+}
+body.dark-mode .pesan-error { 
+    color: #FFB3AC; 
+}
+
+@media (max-width: 1024px) {
+    #Portofolio, #Komentar { 
+        padding: 0; 
+    }
+}
+.menu-sosial {
+    position: relative;
+    display: inline-block;
+}
+
+.menu-sosial .listMedSos {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 10;
+    min-width: 160px;
+    padding: 12px;
+    gap: 8px;
+    background-color: #FFFDF7;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px #00000020;
+}
+
+.menu-sosial .listMedSos.terbuka {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-sosial .MedSos {
+    display: block;
+    padding: 6px;
+    color: #455B43;
+}
+
+body.dark-mode .menu-sosial .listMedSos {
+    background-color: #283129;
+}
+
+body.dark-mode .menu-sosial .MedSos {
+    color: #F6F3EB;
+}
+
+.form-fitur input:invalid, .form-fitur textarea:invalid {
+    border: 2px solid #d9534f;
+}
+
+.form-fitur input:valid, .form-fitur textarea:valid {
+    border: 2px solid #5cb85c;
+}
