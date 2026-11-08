@@ -15,18 +15,17 @@ const BASE = "https://jsonplaceholder.typicode.com/comments";
 const loading = document.querySelector("#loading-komentar");
 
 async function ambilKomentarAPI() {
-    if (loading) {
-        loading.style.display = sedangMemuat ? "flex" : "none";
-    }
+    muatLoadingKomentar(true);
     try{
         const response = await fetch(BASE + "?_limit=1");
         if (!response.ok) {
-            throw new Error("Status: " + response.status);
+            throw new Error(pesanStatusResponse(response.status));
         }
         const dataKomentar = await response.json();
         const komentarAwal = dataKomentar.map((komentar) => ({
             nama: komentar.name,
-            pesan: komentar.body
+            pesan: komentar.body,
+            id: komentar.id
         }));
 
         if (localStorage.getItem("komentar") === null) {
@@ -35,16 +34,13 @@ async function ambilKomentarAPI() {
                 JSON.stringify(komentarAwal)
             );
         }
-
         muatKomentar();
     } catch (error) {
         errorKomentar.innerHTML =
             "<b>Gagal memuat komentar, silakan coba lagi nanti.</b>";
         console.error("Gagal mengambil data:", error);
     } finally {
-        if (loading) {
-            loading.style.display = sedangMemuat ? "flex" : "none";
-        }
+        muatLoadingKomentar(false);
     }
 }
 
@@ -56,7 +52,9 @@ function muatPreferensiTema() {
   const tema = localStorage.getItem("tema");
   if (tema === "dark") {
     document.body.classList.add("dark-mode");
-    tombolTema.textContent = "Terang";
+    if (tombolTema) {
+        tombolTema.textContent = "Terang";
+    }
   }
 }
 if (tombolTema) {
@@ -186,9 +184,9 @@ const hapusSemuaKomen = document.querySelector("#hapus-semua-komentar");
 const inputNamaDraf = document.querySelector("#input-nama");
 const inputPesanDraf = document.querySelector("#input-pesan");
 
-function simpanKomentar(nama, pesan) {
+function simpanKomentar(nama, pesan, id) {
   const daftar = JSON.parse(localStorage.getItem("komentar")) || [];
-  daftar.push({ nama, pesan });
+  daftar.push({ nama, pesan, id });
   localStorage.setItem("komentar", JSON.stringify(daftar));
 }
 function hapusKomentar(indeks) {
@@ -197,7 +195,7 @@ function hapusKomentar(indeks) {
   localStorage.setItem("komentar", JSON.stringify(daftar));
   muatKomentar();
 }
-function buatItemKomentar(nama, pesan, indeks) {
+function buatItemKomentar(nama, pesan, indeks, id) {
     const item = document.createElement("li");
     const teks = document.createElement("p");
     teks.textContent = nama + ": " + pesan;
@@ -209,6 +207,8 @@ function buatItemKomentar(nama, pesan, indeks) {
     edit.type = "button";
     hapus.classList.add("hapus-komentar");
     edit.classList.add("edit-komentar");
+    item.dataset.id = id;
+    item.dataset.indeks = indeks;
     hapus.dataset.indeks = indeks;
     edit.dataset.indeks = indeks;
     item.appendChild(teks);
@@ -228,14 +228,22 @@ async function kirimKomentar(nama, pesan) {
         }
     );
     if (!response.ok) {
-        throw new Error("Gagal mengirim komentar, status: " + response.status);
+        throw new Error(pesanStatusResponse(response.status));
     }
     return await response.json();
 }
+
+function editKomentar(indeks, pesanBaru) {
+    const daftar = JSON.parse(localStorage.getItem("komentar")) || [];
+    daftar[indeks].pesan = pesanBaru;
+    localStorage.setItem("komentar", JSON.stringify(daftar));
+    muatKomentar();
+}
+
 function muatKomentar() {
   daftarKomentar.textContent = "";
   const daftar = JSON.parse(localStorage.getItem("komentar")) || [];
-  daftar.forEach((k, indeks) => {buatItemKomentar(k.nama, k.pesan, indeks) 
+  daftar.forEach((k, indeks) => {buatItemKomentar(k.nama, k.pesan, indeks, k.id) 
   });
 }
 function simpanDraf() {
@@ -266,42 +274,67 @@ if (formKomentar && daftarKomentar && hapusSemuaKomen) {
             return;
         }
         try {
-            await kirimKomentar(nama, pesan);
+            const hasil = await kirimKomentar(nama, pesan);
             console.log("Komentar tersimpan di server, id:", hasil.id);
             errorKomentar.textContent = "";
-            simpanKomentar(nama, pesan);
+            simpanKomentar(nama, pesan, hasil.id);
             muatKomentar();
             formKomentar.reset();
             sessionStorage.removeItem("drafKomentar");
         } catch (error) {
-            errorKomentar.textContent = "Gagal memuat komentar";
+            errorKomentar.textContent = "Gagal mengirim komentar";
             console.error(error);
         }
         
     });
     daftarKomentar.addEventListener("click", async (event) => {
-        if(event.target.tagName == "BUTTON") {
+        if (event.target.classList.contains("hapus-komentar")) {
             const li = event.target.closest("li");
-            const id = li.dataset.id;
+            const id = Number(li.dataset.id);
+            const indeks = Number(li.dataset.indeks);
             try {
-                const response = await fetch(
-                    BASE + `/${id}`, {
-                        method: "DELETE",
-                    }
-                );
-                if (!response.ok) {
-                    throw new Error("Status" + response.status)
+                if (Number.isNaN(id) ) {
+                    hapusKomentar(indeks);
                 }
-                li.remove();
+                else {
+                    const response = await fetch(
+                        BASE + `/${id}`, {
+                            method: "DELETE",
+                        }
+                    );
+                    if (!response.ok) {
+                        throw new Error(pesanStatusResponse(response.status))
+                    }
+                    hapusKomentar(indeks);
+                }
             } catch (error) {
                 alert("Gagal menghapus komentar dari server");
                 console.error(error);
             } 
         }
     });
-    hapusSemuaKomen.addEventListener("click", function () {
-        localStorage.setItem("komentar", JSON.stringify([]));
-        muatKomentar();
+    hapusSemuaKomen.addEventListener("click", async function () {
+        const daftar = JSON.parse(localStorage.getItem("komentar")) || [];
+        try {
+            for(const k of daftar) {
+                if (!Number.isInteger(k.id)) {
+                    continue;
+                }
+                const response = await fetch(
+                    BASE + `/${k.id}`, {
+                        method: "DELETE",
+                    }
+                );
+                if (!response.ok) {
+                    throw new Error(pesanStatusResponse(response.status));
+                }
+            }
+            localStorage.setItem("komentar", JSON.stringify([]));
+            muatKomentar();
+        } catch (error) {
+            alert("Gagal menghapus semua komentar dari server");
+            console.error(error);
+        }
     });
     muatKomentar();
     muatDraf();
@@ -352,3 +385,9 @@ if (tombolSosial && daftarSosial) {
     });
 }
 
+function pesanStatusResponse (status) {
+    if (status === 404) return "Data Tidak Ditemukan diserver";
+    else if (status === 400) return "Data Yang Dikirim Tidak Valid";
+    else if (status >= 500) return "Server Sedang Bermasalah, Silahkan coba lain kali";
+    return "Terjadi kesalahan tak terduga";
+}
