@@ -1,43 +1,48 @@
+/*===========================
+    FUNCTION MUAT LOADING
+  ===========================*/
+function muatLoadingKomentar(sedangMemuat) {
+    
+    if (loading) {
+        loading.style.display = sedangMemuat ? "flex" : "none";
+    }
+}
+
 /* =========================================================
    SUPAYA MUNCUL LOADING + ELEMEN
    ========================================================= */
-const BASE = "https://jsonplaceholder.typicode.com";
-const loading = document.querySelector("#loading");
+const BASE = "https://jsonplaceholder.typicode.com/comments";
+const loading = document.querySelector("#loading-komentar");
 
-async function muatLoading() {
-    if (loading) {
-        loading.style.display = "flex";
-    }
+async function ambilKomentarAPI() {
+    muatLoadingKomentar(true);
     try{
-        const response = await fetch(BASE + "/comments?_limit=1");
+        const response = await fetch(BASE + "?_limit=1");
         if (!response.ok) {
-            throw new Error("Status: " + response.status);
+            throw new Error(pesanStatusResponse(response.status));
         }
         const dataKomentar = await response.json();
-        dataKomentar.forEach((Comment) => {
-            const item = document.createElement("li");
-            const teks = document.createElement("p");
-            teks.textContent = Comment.name + ": " + Comment.body;
-            const hapus = document.createElement("button");
-            hapus.textContent = "Hapus";
-            hapus.type = "button";
-            hapus.classList.add("hapus-komentar");
-            hapus.dataset.indeks = Comment.id;
-            item.appendChild(teks);
-            item.appendChild(hapus);
-            daftarKomentar.appendChild(item);
-        });
+        const komentarAwal = dataKomentar.map((komentar) => ({
+            nama: komentar.name,
+            pesan: komentar.body,
+            id: komentar.id
+        }));
+
+        if (localStorage.getItem("komentar") === null) {
+            localStorage.setItem(
+                "komentar",
+                JSON.stringify(komentarAwal)
+            );
+        }
+        muatKomentar();
     } catch (error) {
-        containerArtikel.innerHTML =
-            "<p>Gagal memuat artikel, silakan coba lagi nanti.</p>";
+        errorKomentar.innerHTML =
+            "<b>Gagal memuat komentar, silakan coba lagi nanti.</b>";
         console.error("Gagal mengambil data:", error);
     } finally {
-        if (loading) {
-            loading.style.display = "none";
-        }
+        muatLoadingKomentar(false);
     }
 }
-muatLoading();
 
 /* =========================================================
    UNTUK TOMBOL PERGANTIAN TEMA
@@ -47,10 +52,11 @@ function muatPreferensiTema() {
   const tema = localStorage.getItem("tema");
   if (tema === "dark") {
     document.body.classList.add("dark-mode");
-    tombolTema.textContent = "Terang";
+    if (tombolTema) {
+        tombolTema.textContent = "Terang";
+    }
   }
 }
-muatPreferensiTema();
 if (tombolTema) {
     tombolTema.addEventListener("click", function () {
         const gelap = document.body.classList.toggle("dark-mode");
@@ -59,6 +65,7 @@ if (tombolTema) {
         localStorage.setItem("tema", gelap ? "dark" : "light");
     });
 }
+muatPreferensiTema();
 
 /* =========================================================
    UNTUK TOMBOL SEMBUNYI ASIDE
@@ -177,9 +184,9 @@ const hapusSemuaKomen = document.querySelector("#hapus-semua-komentar");
 const inputNamaDraf = document.querySelector("#input-nama");
 const inputPesanDraf = document.querySelector("#input-pesan");
 
-function simpanKomentar(nama, pesan) {
+function simpanKomentar(nama, pesan, id) {
   const daftar = JSON.parse(localStorage.getItem("komentar")) || [];
-  daftar.push({ nama, pesan });
+  daftar.push({ nama, pesan, id });
   localStorage.setItem("komentar", JSON.stringify(daftar));
 }
 function hapusKomentar(indeks) {
@@ -188,23 +195,55 @@ function hapusKomentar(indeks) {
   localStorage.setItem("komentar", JSON.stringify(daftar));
   muatKomentar();
 }
-function buatItemKomentar(nama, pesan, indeks) {
+function buatItemKomentar(nama, pesan, indeks, id) {
     const item = document.createElement("li");
     const teks = document.createElement("p");
     teks.textContent = nama + ": " + pesan;
     const hapus = document.createElement("button");
+    const edit = document.createElement("button");
     hapus.textContent = "Hapus";
+    edit.textContent = "Edit";
     hapus.type = "button";
+    edit.type = "button";
     hapus.classList.add("hapus-komentar");
+    edit.classList.add("edit-komentar");
+    item.dataset.id = id;
+    item.dataset.indeks = indeks;
     hapus.dataset.indeks = indeks;
+    edit.dataset.indeks = indeks;
     item.appendChild(teks);
     item.appendChild(hapus);
+    item.appendChild(edit);
     daftarKomentar.appendChild(item);
 }
+async function kirimKomentar(nama, pesan) {
+    const response = await fetch(
+        BASE, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                name: nama,
+                body: pesan,
+            })
+        }
+    );
+    if (!response.ok) {
+        throw new Error(pesanStatusResponse(response.status));
+    }
+    return await response.json();
+}
+
+function editKomentar(indeks, pesanBaru) {
+    const daftar = JSON.parse(localStorage.getItem("komentar")) || [];
+    daftar[indeks].pesan = pesanBaru;
+    localStorage.setItem("komentar", JSON.stringify(daftar));
+    muatKomentar();
+}
+
 function muatKomentar() {
   daftarKomentar.textContent = "";
   const daftar = JSON.parse(localStorage.getItem("komentar")) || [];
-  daftar.forEach((k, indeks) => {buatItemKomentar(k.nama, k.pesan, indeks) 
+  daftar.forEach((k, indeks) => {buatItemKomentar(k.nama, k.pesan, indeks, k.id) 
   });
 }
 function simpanDraf() {
@@ -222,7 +261,7 @@ function muatDraf() {
   }
 }
 if (formKomentar && daftarKomentar && hapusSemuaKomen) {
-    formKomentar.addEventListener("submit", function (event) {
+    formKomentar.addEventListener("submit", async function (event) {
         event.preventDefault();
         const nama = document.querySelector("#input-nama").value.trim();
         const pesan = document.querySelector("#input-pesan").value.trim();
@@ -234,24 +273,72 @@ if (formKomentar && daftarKomentar && hapusSemuaKomen) {
             errorKomentar.textContent = "Komentar minimal 5 karakter.";
             return;
         }
-        errorKomentar.textContent = "";
-        simpanKomentar(nama, pesan);
-        muatKomentar();
-        formKomentar.reset();
-        sessionStorage.removeItem("drafKomentar");
+        try {
+            const hasil = await kirimKomentar(nama, pesan);
+            console.log("Komentar tersimpan di server, id:", hasil.id);
+            errorKomentar.textContent = "";
+            simpanKomentar(nama, pesan, hasil.id);
+            muatKomentar();
+            formKomentar.reset();
+            sessionStorage.removeItem("drafKomentar");
+        } catch (error) {
+            errorKomentar.textContent = "Gagal mengirim komentar";
+            console.error(error);
+        }
+        
     });
-    daftarKomentar.addEventListener("click", function (event) {
-        if (event.target.matches("button.hapus-komentar")) {
-            const indeks = parseInt(event.target.dataset.indeks, 10);
-            hapusKomentar(indeks);
+    daftarKomentar.addEventListener("click", async (event) => {
+        if (event.target.classList.contains("hapus-komentar")) {
+            const li = event.target.closest("li");
+            const id = Number(li.dataset.id);
+            const indeks = Number(li.dataset.indeks);
+            try {
+                if (Number.isNaN(id) ) {
+                    hapusKomentar(indeks);
+                }
+                else {
+                    const response = await fetch(
+                        BASE + `/${id}`, {
+                            method: "DELETE",
+                        }
+                    );
+                    if (!response.ok) {
+                        throw new Error(pesanStatusResponse(response.status))
+                    }
+                    hapusKomentar(indeks);
+                }
+            } catch (error) {
+                alert("Gagal menghapus komentar dari server");
+                console.error(error);
+            } 
         }
     });
-    hapusSemuaKomen.addEventListener("click", function () {
-        localStorage.removeItem("komentar");
-        muatKomentar();
+    hapusSemuaKomen.addEventListener("click", async function () {
+        const daftar = JSON.parse(localStorage.getItem("komentar")) || [];
+        try {
+            for(const k of daftar) {
+                if (!Number.isInteger(k.id)) {
+                    continue;
+                }
+                const response = await fetch(
+                    BASE + `/${k.id}`, {
+                        method: "DELETE",
+                    }
+                );
+                if (!response.ok) {
+                    throw new Error(pesanStatusResponse(response.status));
+                }
+            }
+            localStorage.setItem("komentar", JSON.stringify([]));
+            muatKomentar();
+        } catch (error) {
+            alert("Gagal menghapus semua komentar dari server");
+            console.error(error);
+        }
     });
     muatKomentar();
     muatDraf();
+    ambilKomentarAPI();
     inputNamaDraf.addEventListener("input", simpanDraf);
     inputPesanDraf.addEventListener("input", simpanDraf);
 }
@@ -264,11 +351,11 @@ function tampilkanTombolAtas() {
     if (window.scrollY > 300) tombolAtas.style.display = "block";
     else tombolAtas.style.display = "none";
 }
-window.addEventListener("scroll", tampilkanTombolAtas);
 if (tombolAtas) {
     tombolAtas.addEventListener("click", function () {
         window.scrollTo(0, 0);
     });
+    window.addEventListener("scroll", tampilkanTombolAtas);
     tampilkanTombolAtas();
 }
 
@@ -291,11 +378,16 @@ if (btnMenuHP && menuNav) {
 }
 const tombolSosial = document.querySelector("#btn-sosial");
 const daftarSosial = document.querySelector(".listMedSos");
-if (tombolSosial) {
+if (tombolSosial && daftarSosial) {
     tombolSosial.addEventListener("click", function () {
         const terbuka = daftarSosial.classList.toggle("terbuka");
-
         tombolSosial.setAttribute("aria-expanded", terbuka);
     });
 }
 
+function pesanStatusResponse (status) {
+    if (status === 404) return "Data Tidak Ditemukan diserver";
+    else if (status === 400) return "Data Yang Dikirim Tidak Valid";
+    else if (status >= 500) return "Server Sedang Bermasalah, Silahkan coba lain kali";
+    return "Terjadi kesalahan tak terduga";
+}
