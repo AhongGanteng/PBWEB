@@ -288,10 +288,11 @@ if (formKomentar && daftarKomentar && hapusSemuaKomen) {
         
     });
     daftarKomentar.addEventListener("click", async (event) => {
+        const li = event.target.closest("li");
+        if (!li) return;
+        const id = Number(li.dataset.id);
+        const indeks = Number(li.dataset.indeks);
         if (event.target.classList.contains("hapus-komentar")) {
-            const li = event.target.closest("li");
-            const id = Number(li.dataset.id);
-            const indeks = Number(li.dataset.indeks);
             try {
                 if (Number.isNaN(id) ) {
                     hapusKomentar(indeks);
@@ -303,7 +304,7 @@ if (formKomentar && daftarKomentar && hapusSemuaKomen) {
                         }
                     );
                     if (!response.ok) {
-                        throw new Error(pesanStatusResponse(response.status))
+                        throw new Error(pesanStatusResponse(response.status));
                     }
                     hapusKomentar(indeks);
                 }
@@ -311,6 +312,35 @@ if (formKomentar && daftarKomentar && hapusSemuaKomen) {
                 alert("Gagal menghapus komentar dari server");
                 console.error(error);
             } 
+        } else if (event.target.classList.contains("edit-komentar")) {
+            const daftar = JSON.parse(localStorage.getItem("komentar")) || [];
+            const pesanLama = daftar[indeks].pesan;
+            const input = prompt("Edit komentar:", pesanLama);
+            if (input === null) return;
+            const pesanBaru = input.trim();
+            if (pesanBaru === "" || pesanBaru.length < 5) {
+                alert("Komentar minimal 5 karakter");
+                return;
+            }
+            try {
+                if (Number.isNaN(id) ) {
+                    editKomentar(indeks, pesanBaru);
+                }
+                else {
+                    const response = await fetch(BASE + `/${id}`, {
+                        method: "PATCH",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ body: pesanBaru })
+                    });
+                    if (!response.ok) {
+                        throw new Error(pesanStatusResponse(response.status));
+                    }
+                    editKomentar(indeks, pesanBaru);
+                }
+            } catch (error) {
+                alert("Gagal mengedit komentar dari server");
+                console.error(error);
+            }
         }
     });
     hapusSemuaKomen.addEventListener("click", async function () {
